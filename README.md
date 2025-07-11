@@ -89,10 +89,17 @@ Create secret in the pygeoapi-demo namespace:
 
 ```bash
 kubectl create secret tls pygeoapi-tls-secret \
-  --cert=/etc/certs/tests_fullchain1.pem \
-  --key=/etc/certs/tests_privkey1.pem \
+  --cert=/etc/certs/tests_fullchain2.pem \
+  --key=/etc/certs/tests_privkey2.pem \
   -n pygeoapi-demo
 ```
+
+In case it exists, delete it first:
+
+```bash
+kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
+```
+
 Reload ingress:
 
 ```
