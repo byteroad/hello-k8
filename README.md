@@ -96,7 +96,7 @@ kubectl create secret tls pygeoapi-tls-secret \
 Reload ingress:
 
 ```
-kubectl apply -f base/ingress-ssl.yaml
+kubectl apply -f base/ingress-ssl.yml
 ```
 
 ## License
