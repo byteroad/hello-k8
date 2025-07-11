@@ -83,6 +83,22 @@ CREATE INDEX
 
 ![CRUS Obidos](crus-obidos.png)
 
+## SSL
+
+Create secret in the pygeoapi-demo namespace:
+
+```bash
+kubectl create secret tls pygeoapi-tls-secret \
+  --cert=/etc/certs/tests_fullchain1.pem \
+  --key=/etc/certs/tests_privkey1.pem \
+  -n pygeoapi-demo
+```
+Reload ingress:
+
+```
+kubectl apply -f 
+```
+
 ## License
 
 This project is released under a [MIT License](./LICENSE)

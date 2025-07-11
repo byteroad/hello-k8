@@ -90,25 +90,6 @@ You can check that ingress is running with the following command:
 
     $ kubectl -n pygeoapi-demo get ingress
 
-In case your address is **not** `192.168.49.2`, you need update the IP address inside
-[./kustomization.yaml](./kustomization.yaml):
-
-    [...]
-    patches:
-      - target:
-          kind: Deployment
-          name: pygeoapi
-        patch: |
-          - op: add
-            path: /spec/template/spec/containers/0/env/-
-            value:
-              name: SAMPLE_CONFIG_PYGEOAPI_URL
-              value: http://192.168.49.2
-
-And then regenerate and reapply the Kubernetes manifests:
-
-    $ kustomize build . | kubectl apply -f -
-
 At this points the pygeoapi pods should not be available yet --- because
 they're trying to access the lake dataset from the PostgreSQL instance,
 and we haven't loaded it yet:
