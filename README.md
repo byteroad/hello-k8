@@ -106,6 +106,15 @@ Reload ingress:
 kubectl apply -f base/ingress-ssl.yml
 ```
 
+## Generate Diagrams
+
+```
+kubectl kustomize base | docker run -v "$(pwd)":/work -i philippemerle/kubediagrams kube-diagrams - -o diagram.png
+```
+
+
+
+
 ## License
 
 This project is released under a [MIT License](./LICENSE)
