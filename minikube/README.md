@@ -77,6 +77,12 @@ Status:
 		loadbalancer emulator: no errors
 ```
 
+Run it in the background with:
+
+```
+nohup minikube tunnel > minikube_tunnel.log 2>&1 &
+```
+
 In this example run, your local pygeo instance will be accessible
 at `192.168.49.2`.
 
