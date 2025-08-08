@@ -34,6 +34,22 @@ Create the Kubernetes namespace to host pygeoapi:
     $ kubectl create ns pygeoapi-demo
     namespace/pygeoapi-demo created
 
+Create the persistence storage for PostgreSQL:
+
+    $ kubectl apply -f postgres-pv.yaml
+
+Verify storage is bound:
+
+    $ kubectl apply -f postgres-pvc.yaml
+
+Check the PV status:
+
+    $ kubectl get pv
+
+Check the PVC status:
+
+    $ kubectl get pvc -n pygeoapi-demo
+
 From this directory, generate and apply the Kubernetes manifests with the
 following command:
 
@@ -133,12 +149,3 @@ After a short while they should now be up and running:
     pygeoapi-9d996dc-bmwpw   1/1     Running   0          32s
     pygeoapi-9d996dc-t4cm6   1/1     Running   0          32s
 
-And, most importantly, you should see the pygeoapi instance at the expected
-IP address:
-
-    $ curl http://192.168.49.2
-    [ ... the JSON top-level view ...]
-
-
-[minikube]: https://minikube.sigs.k8s.io/docs/
-[minikube tunnel]: https://minikube.sigs.k8s.io/docs/handbook/accessing/

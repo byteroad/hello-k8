@@ -23,15 +23,6 @@ To deploy and run these samples you will need the following tools:
 If you have [Nix](https://nix.dev/) installed on your computer, the [Nix flake
 definition](./flake.nix) in this directory will install those tools for you.
 
-
-## How to deply these samples
-
-Check the target-specific instructions, depending on where you are deploying
-to:
-
-* [./minikube/README.md](./minikube/README.md)
-
-
 ## Loading the CRUS Obidos dataset
 
 Once the PostgreSQL instance is up and running, use the
@@ -89,8 +80,8 @@ Create secret in the pygeoapi-demo namespace:
 
 ```bash
 kubectl create secret tls pygeoapi-tls-secret \
-  --cert=/etc/certs/tests_fullchain2.pem \
-  --key=/etc/certs/tests_privkey2.pem \
+  --cert=/home/byteroad/fullchain1.pem \
+  --key=/home/byteroad/privkey1.pem \
   -n pygeoapi-demo
 ```
 
