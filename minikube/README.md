@@ -34,6 +34,8 @@ Create the Kubernetes namespace to host pygeoapi:
     $ kubectl create ns pygeoapi-demo
     namespace/pygeoapi-demo created
 
+Make NGINX Ingress Controller pods and services run in the pygeoapo-demo ns
+
 ### Create storage
 
 Create the persistence storage for PostgreSQL:
