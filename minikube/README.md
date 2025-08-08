@@ -1,42 +1,30 @@
-## Deplying to a local Minikube cluster
+## Deplying to a local cluster
 
 Tested under Linux.
 
-
-## Extra tools required
-
-You will need to have [minikube] installed, of course.
-
-
 ## Bring the cluster up
 
-The script [minikube-start](./minikube-start) creates a local Minikube
-cluster with the following add-ons enabled:
 
-* `default-storageclass`
-* `ingress`
-* `storage-provisioner`
+The cluster should be up and running now. Try the following command to
+view its state:
 
-It might take up to 10 minutes for the cluster to be available:
-
-    $ ./minikube-start
-    [.. Lots of output follow ...]
-    🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
-
-The cluster should be up and running now. Try the following commands to
-config its state:
-
-    $ minikube status
-    minikube
-    type: Control Plane
-    host: Running
-    kubelet: Running
-    apiserver: Running
-    kubeconfig: Configured
+    $ kubectl get pods -n kube-system
+        NAME                                      READY   STATUS    RESTARTS   AGE
+        coredns-674b8bbfcf-2zwpp                  1/1     Running   0          6d19h
+        coredns-674b8bbfcf-47cq6                  1/1     Running   0          6d19h
+        etcd-srvquaintergeo1                      1/1     Running   17         6d19h
+        kube-apiserver-srvquaintergeo1            1/1     Running   17         6d19h
+        kube-controller-manager-srvquaintergeo1   1/1     Running   1          6d19h
+        kube-proxy-44rmd                          1/1     Running   0          6d17h
+        kube-proxy-kv4d4                          1/1     Running   0          6d17h
+        kube-proxy-wvvtk                          1/1     Running   0          6d17h
+        kube-scheduler-srvquaintergeo1            1/1     Running   23         6d19h
 
     $ kubectl get nodes
-    NAME       STATUS   ROLES           AGE     VERSION
-    minikube   Ready    control-plane   6m39s   v1.30.0
+        NAME              STATUS   ROLES           AGE     VERSION
+        srvquaintergeo1   Ready    control-plane   6d19h   v1.33.3
+        srvquaintergeo2   Ready    <none>          6d19h   v1.33.3
+        srvquaintergeo3   Ready    <none>          6d19h   v1.33.3
 
 
 ## Deploy pygeoapi and the PostgreSQL instance
@@ -60,37 +48,6 @@ following command:
     statefulset.apps/postgresql created
     ingress.networking.k8s.io/pygeoapi created
 
-If you want to run ingress with an external IP, you'll need to run a [minikube tunnel][] in a
-separate terminal:
-
-```bash
-minikube tunnel
-Status:	
-	machine: minikube
-	pid: 115758
-	route: 10.96.0.0/12 -> 192.168.49.2
-	minikube: Running
-	services: []
-    errors: 
-		minikube: no errors
-		router: no errors
-		loadbalancer emulator: no errors
-```
-
-Run it in the background with:
-
-```
-nohup minikube tunnel > minikube_tunnel.log 2>&1 &
-```
-
-In this example run, your local pygeo instance will be accessible
-at `192.168.49.2`.
-
-Enable ingress with:
-
-```bash
-minikube addons enable ingress
-```
 
 You can check that ingress is running with the following command:
 
@@ -106,11 +63,58 @@ and we haven't loaded it yet:
     pygeoapi-7b5d79d6fb-hnbrt   0/1     CrashLoopBackOff   5 (71s ago)   4m32s
     pygeoapi-7b5d79d6fb-xgt7q   0/1     CrashLoopBackOff   5 (66s ago)   4m32s
 
-## Load the CRUS Obidos dataset
+## Create storage
 
-Refer to the [instructions in the parent directory](../README.md) to load
-the dataset into the PostgreSQL instance. Come back here when you have
-successfully loaded the data.
+## Loading the CRUS Obidos dataset
+
+Once the PostgreSQL instance is up and running, use the
+[load-data](./load-data) script to feed the crus data into Kubernetes
+PostgreSQL instance:
+
+```bash
+    $ ./load-data 
++++ dirname ./load-data
+++ cd .
+++ pwd
++ here=/home/joana/git/hello-k8
++ bzcat /home/joana/git/hello-k8/crus_obidos.sql.bz2
++ kubectl -n pygeoapi-demo exec -i postgresql-0 -- psql --host localhost --user pygeoapi crus
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+SET
+SET
+DROP INDEX
+ALTER TABLE
+ALTER TABLE
+DROP SEQUENCE
+DROP TABLE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+ALTER TABLE
+COPY 381
+ setval 
+-s-------
+    381
+(1 row)
+
+ALTER TABLE
+CREATE INDEX
+```
+
+![CRUS Obidos](crus-obidos.png)
 
 
 ## Restart the pygeo pods

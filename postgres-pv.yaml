@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv-manual  # The name of the PV object itself
+spec:
+  storageClassName: "manual" # A custom name to ensure only specific PVCs bind to it
+  capacity:
+    storage: 5Gi             # The size of the storage
+  accessModes:
+    - ReadWriteOnce        # Can be mounted by a single node
+  hostPath:
+    path: "/mnt/postgres-data" # The path on the worker node
