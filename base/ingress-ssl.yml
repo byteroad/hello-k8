@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - tests.byteroad.net
+        - k8.byteroad.net
       secretName: pygeoapi-tls-secret
   rules:
-    - host: tests.byteroad.net
+    - host: k8.byteroad.net
       http:
         paths:
           - path: /
