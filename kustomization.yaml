@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
   # We build upon the generic pygeoapi stack defined in the sibling `base`
   # directory
-  - ../base
+  - ./base
 
 namespace: pygeoapi-demo
 
