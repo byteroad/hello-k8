@@ -34,6 +34,8 @@ Create the Kubernetes namespace to host pygeoapi:
     $ kubectl create ns pygeoapi-demo
     namespace/pygeoapi-demo created
 
+### Create storage
+
 Create the persistence storage for PostgreSQL:
 
     $ kubectl apply -f postgres-pv.yaml
@@ -65,6 +67,11 @@ following command:
     ingress.networking.k8s.io/pygeoapi created
 
 
+Install ingres controller:
+
+    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+
+
 You can check that ingress is running with the following command:
 
     $ kubectl -n pygeoapi-demo get ingress
@@ -78,8 +85,6 @@ and we haven't loaded it yet:
     postgresql-0                1/1     Running            0             4m32s
     pygeoapi-7b5d79d6fb-hnbrt   0/1     CrashLoopBackOff   5 (71s ago)   4m32s
     pygeoapi-7b5d79d6fb-xgt7q   0/1     CrashLoopBackOff   5 (66s ago)   4m32s
-
-## Create storage
 
 ## Loading the CRUS Obidos dataset
 
@@ -149,3 +154,32 @@ After a short while they should now be up and running:
     pygeoapi-9d996dc-bmwpw   1/1     Running   0          32s
     pygeoapi-9d996dc-t4cm6   1/1     Running   0          32s
 
+## SSL
+
+Create secret in the pygeoapi-demo namespace:
+
+```bash
+kubectl create secret tls pygeoapi-tls-secret \
+  --cert=/home/byteroad/fullchain1.pem \
+  --key=/home/byteroad/privkey1.pem \
+  -n pygeoapi-demo
+```
+
+In case it exists, delete it first:
+
+```bash
+kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
+```
+
+Reload ingress:
+
+```
+kubectl apply -f base/ingress-ssl.yml
+```
+
+## Reset
+
+kubectl delete namespace pygeoapi-demo
+namespace "pygeoapi-demo" deleted
+
+kubectl delete pv postgres-pv-manual

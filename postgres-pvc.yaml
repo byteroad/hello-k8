@@ -9,4 +9,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi           # The requested size must be <= the PV's capacity
+      storage: 1Gi           # The requested size must be <= the PV's capacity

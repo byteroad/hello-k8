@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: "manual" # A custom name to ensure only specific PVCs bind to it
   capacity:
-    storage: 5Gi             # The size of the storage
+    storage: 1Gi             # The size of the storage
   accessModes:
     - ReadWriteOnce        # Can be mounted by a single node
   hostPath:
