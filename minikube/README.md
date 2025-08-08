@@ -52,6 +52,15 @@ Check the PVC status:
 
     $ kubectl get pvc -n pygeoapi-demo
 
+Install ingres controller:
+
+    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+
+
+You can check that ingress is running with the following command:
+
+    $ kubectl -n pygeoapi-demo get ingress
+
 From this directory, generate and apply the Kubernetes manifests with the
 following command:
 
@@ -65,16 +74,6 @@ following command:
     deployment.apps/pygeoapi created
     statefulset.apps/postgresql created
     ingress.networking.k8s.io/pygeoapi created
-
-
-Install ingres controller:
-
-    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
-
-
-You can check that ingress is running with the following command:
-
-    $ kubectl -n pygeoapi-demo get ingress
 
 At this points the pygeoapi pods should not be available yet --- because
 they're trying to access the lake dataset from the PostgreSQL instance,
