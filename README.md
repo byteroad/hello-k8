@@ -1,6 +1,6 @@
-# Sample Kubernetes deployments
+# Kubernetes deployment of pygeoapi
 
-This directory contains a sample Kubernetes deployment of:
+This directory contains a Kubernetes deployment of:
 
 * A [pygeoapi](https://pygeoapi.io/) instance, configured to show the some collections 
   from [DGT](https://www.dgterritorio.gov.pt/?language=en), currently OGC API - Maps. 
