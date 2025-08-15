@@ -4,7 +4,7 @@
 resources:
   - pygeoapi
   - ingress.yaml
-  # - ingress-ssl.yml
+  # - ingress-ssl.yaml
 
 configMapGenerator:
   # Here we define the names of the PostgreSQL database and tables which will

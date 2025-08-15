@@ -2,23 +2,21 @@
 
 This directory contains a sample Kubernetes deployment of:
 
-* A [pygeoapi](https://pygeoapi.io/) instance, configured to show the [CRUS Obidos dataset](https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/517c5023-04cc-47a4-99f7-bb32814dd62f)
-  from [DGT](https://www.dgterritorio.gov.pt/?language=en), which is served by:
-* A PostgreSQL instance set up with the PostGIS extension, which stores the
-  lake data.
+* A [pygeoapi](https://pygeoapi.io/) instance, configured to show the some collections 
+  from [DGT](https://www.dgterritorio.gov.pt/?language=en), currently OGC API - Maps. 
 
-The Kubernetes manifests needed to run these samples are generated with
-[Kustomize](https://kustomize.io/). They build upon [a common base definition](./base/), and the
-following types of Kubernetes clusters are supported:
+The Kubernetes manifests needed to run this server are generated with
+[Kustomize](https://kustomize.io/). They build upon [a common base definition](./base/).
 
-* A local [minikube](https://minikube.sigs.k8s.io/docs/) cluster (see [./minikube/](./minikube/))
+![architecture](./diagram.png)
 
 ## Required tools
 
 To deploy and run these samples you will need the following tools:
 * [Kustomize](https://kustomize.io/),
 * The [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) command-line tool, and
-* [bzip2](https://man.freebsd.org/cgi/man.cgi?query=bunzip&apropos=0).
+* Flannel
+* Ingress
 
 If you have [Nix](https://nix.dev/) installed on your computer, the [Nix flake
 definition](./flake.nix) in this directory will install those tools for you.
@@ -29,7 +27,6 @@ definition](./flake.nix) in this directory will install those tools for you.
 Tested under Linux.
 
 ## Bring the cluster up
-
 
 The cluster should be up and running now. Try the following command to
 view its state:
@@ -53,26 +50,25 @@ view its state:
         srvquaintergeo3   Ready    <none>          6d19h   v1.33.3
 
 
-## Deploy pygeoapi and the PostgreSQL instance
+## Deploy pygeoapi
+
+If you need to reset a previous installation, go to [troubleshooting](#troubleshooting).
 
 Create the Kubernetes namespace to host pygeoapi:
 
     $ kubectl create ns pygeoapi-demo
     namespace/pygeoapi-demo created
 
-<!-- Make NGINX Ingress Controller pods and services run in the pygeoapo-demo ns
-
-Install ingres controller:
-
-    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
-
-
-You can check that ingress is running with the following command:
-
-    $ kubectl -n pygeoapi-demo get ingress
- -->
 From this directory, generate and apply the Kubernetes manifests with the
 following command:
+
+  $ kustomize build . | kubectl apply -f -
+  configmap/database-config-6dbbd6bk5k unchanged
+  configmap/pygeoapi-config-c74fh986b2 unchanged
+  secret/database-credentials-m5dk7mmmmf unchanged
+  service/pygeoapi unchanged
+  deployment.apps/pygeoapi created
+  ingress.networking.k8s.io/pygeoapi unchanged
 
     $ kustomize build . | kubectl apply -f -
     configmap/database-config-fmfm5hc2m5 created
@@ -85,61 +81,98 @@ following command:
     statefulset.apps/postgresql created
     ingress.networking.k8s.io/pygeoapi created
 
-At this points the pygeoapi pods should not be available yet --- because
-they're trying to access the lake dataset from the PostgreSQL instance,
-and we haven't loaded it yet:
+Check the pods are up and running:
 
-    $ kubectl -n pygeoapi-demo get pods
-    NAME                        READY   STATUS             RESTARTS      AGE
-    postgresql-0                1/1     Running            0             4m32s
-    pygeoapi-7b5d79d6fb-hnbrt   0/1     CrashLoopBackOff   5 (71s ago)   4m32s
-    pygeoapi-7b5d79d6fb-xgt7q   0/1     CrashLoopBackOff   5 (66s ago)   4m32s
+```
+  $ kubectl -n pygeoapi-demo get pods
+  NAME                        READY   STATUS    RESTARTS   AGE
+  pygeoapi-6d989df987-2v2p4   1/1     Running   0          9m1s
+  pygeoapi-6d989df987-klkwb   1/1     Running   0          9m1s
+```
 
+You can check the logs of one deployment with:
 
-## Restart the pygeo pods
+    $ kubectl logs -f pygeoapi-6d989df987-2v2p4 -n pygeoapi-demo
 
-Now that the PostgreSQL data contains the expected tables, restart the
-pygeoapi pods:
+## Access the server
+
+Get ingress ports (here, 30184 and 32064):
+
+```
+$ kubectl get service -n ingress-nginx NAME                                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller             LoadBalancer   10.101.67.114   <pending>     80:30184/TCP,443:32064/TCP   90m
+ingress-nginx-controller-admission   ClusterIP      10.98.112.13    <none>        443/TCP                      90m         
+```
+
+Check where ingress is running (here, srvquaintergeo3):
+
+```
+$ kubectl get pods -n ingress-nginx -o wide
+NAME                                        READY   STATUS      RESTARTS   AGE   IP            NODE              NOMINATED NODE   READINESS GATES
+ingress-nginx-admission-create-rrgz6        0/1     Completed   0          93m   10.244.2.48   srvquaintergeo3   <none>           <none>
+ingress-nginx-admission-patch-w62d9         0/1     Completed   0          93m   10.244.2.47   srvquaintergeo3   <none>           <none>
+ingress-nginx-controller-659c88cdd9-b7d4w   1/1     Running     0          93m   10.244.2.49   srvquaintergeo3   <none>           <none>
+```
+
+Get IP of that server (here, 192.168.10.130 :
+
+```
+$ kubectl get nodes -o wide
+NAME              STATUS   ROLES           AGE    VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION     CONTAINER-RUNTIME
+srvquaintergeo1   Ready    control-plane   104m   v1.33.3   192.168.10.128   <none>        Ubuntu 24.04.2 LTS   6.8.0-71-generic   containerd://1.7.27
+srvquaintergeo2   Ready    <none>          99m    v1.33.3   192.168.10.129   <none>        Ubuntu 24.04.2 LTS   6.8.0-71-generic   containerd://1.7.27
+srvquaintergeo3   Ready    <none>          97m    v1.33.3   192.168.10.130   <none>        Ubuntu 24.04.2 LTS   6.8.0-71-generic   containerd://1.7.27
+```
+
+Connect to the server:
+
+    $ curl 192.168.10.130:30184
+
+## Troubleshooting
+
+Delete namespace:
+
+    $ kubectl delete namespace pygeoapi-demo
+    namespace "pygeoapi-demo" deleted
+
+Reload ingress:
+
+    $ kubectl apply -f base/ingress-ssl.yml
+
+Restart the pygeoapi pods:
 
     $ kubectl -n pygeoapi-demo rollout restart deployment pygeoapi
     deployment.apps/pygeoapi restarted
 
-After a short while they should now be up and running:
+Recreate Flannel:
 
-    $ kubectl -n pygeoapi-demo get pods
-    NAME                     READY   STATUS    RESTARTS   AGE
-    postgresql-0             1/1     Running   0          8m50s
-    pygeoapi-9d996dc-bmwpw   1/1     Running   0          32s
-    pygeoapi-9d996dc-t4cm6   1/1     Running   0          32s
+    $ kubectl delete -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+    namespace "kube-flannel" deleted
+    serviceaccount "flannel" deleted
+    clusterrole.rbac.authorization.k8s.io "flannel" deleted
+    clusterrolebinding.rbac.authorization.k8s.io "flannel" deleted
+    configmap "kube-flannel-cfg" deleted
+    daemonset.apps "kube-flannel-ds" deleted
+    byteroad@srvquaintergeo1:~/git/hello-k8$ kubectl get pods -n kube-system | grep flannel
+    byteroad@srvquaintergeo1:~/git/hello-k8$ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+    namespace/kube-flannel created
+    serviceaccount/flannel created
+    clusterrole.rbac.authorization.k8s.io/flannel created
+    clusterrolebinding.rbac.authorization.k8s.io/flannel created
+    configmap/kube-flannel-cfg created
+    daemonset.apps/kube-flannel-ds created
 
-## SSL
 
-Create secret in the pygeoapi-demo namespace:
+## Next Steps
 
-```bash
-kubectl create secret tls pygeoapi-tls-secret \
-  --cert=/home/byteroad/fullchain1.pem \
-  --key=/home/byteroad/privkey1.pem \
-  -n pygeoapi-demo
-```
-
-In case it exists, delete it first:
-
-```bash
-kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
-```
-
-Reload ingress:
-
-```
-kubectl apply -f base/ingress-ssl.yml
-```
-
-## Reset
-
-kubectl delete namespace pygeoapi-demo
-namespace "pygeoapi-demo" deleted
-
+- Ask IT to open port 443 of the server
+- Activate SSL configuration on ingress (see [SSL](#SSL) for generating the keys)
+- ** Enable external IP with traffic on port 443 **
+- Install postgreSQL database on a separate server: https://github.com/byteroad/postgres-dgt
+- Update pygeoapi to publish feature collections from remote PostgreSQL database
+- Add tile services to the composition
+- Update pygeoapi to publish tile collections from the tile services
+- Port the rest of the pygeoapi configuration
 
 ## SSL
 
@@ -156,22 +189,11 @@ In case it exists, delete it first:
 
 ```bash
 kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
-```
-
-Reload ingress:
-
-```
-kubectl apply -f base/ingress-ssl.yml
 ```
 
 ## Generate Diagrams
 
-```
-kubectl kustomize base | docker run -v "$(pwd)":/work -i philippemerle/kubediagrams kube-diagrams - -o diagram.png
-```
-
-
-
+    $ kubectl kustomize base | docker run -v "$(pwd)":/work -i philippemerle/kubediagrams kube-diagrams - -o diagram.png
 
 ## License
 
