@@ -18,10 +18,6 @@ To deploy and run these samples you will need the following tools:
 * Flannel
 * Ingress
 
-If you have [Nix](https://nix.dev/) installed on your computer, the [Nix flake
-definition](./flake.nix) in this directory will install those tools for you.
-
-
 ## Deplying to a local cluster
 
 Tested under Linux.
