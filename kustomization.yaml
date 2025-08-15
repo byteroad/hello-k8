@@ -16,9 +16,6 @@ images:
   - name: geopython/pygeoapi
     newTag: latest
 
-  - name: postgis/postgis
-    newTag: 16-3.4
-
 patches:
   # We do not know in advance the IP address under which pygeoapi will be
   # available, so we need to patch the `pygeoapi` Kubernetes deployment --- by

@@ -15,6 +15,9 @@ spec:
             - bash
             - /etc/pygeoapi/entrypoint.sh
           env:
+            - name: CONTAINER_PORT
+              value: 5000
+
             # We will use this configuration file ...
             - name: PYGEOAPI_CONFIG
               value: /etc/pygeoapi/pygeoapi-config.yaml
@@ -60,7 +63,7 @@ spec:
 
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 5000
 
           volumeMounts:
             - name: config

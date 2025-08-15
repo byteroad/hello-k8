@@ -3,8 +3,8 @@
 # respective entries under this directory for more information
 resources:
   - pygeoapi
-  # - ingress.yaml
-  - ingress-ssl.yml
+  - ingress.yaml
+  # - ingress-ssl.yml
 
 configMapGenerator:
   # Here we define the names of the PostgreSQL database and tables which will
