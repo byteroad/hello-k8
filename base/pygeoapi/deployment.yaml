@@ -33,13 +33,8 @@ spec:
                   key: db_name
 
             - name: SAMPLE_CONFIG_POSTGRESQL_HOST
-              value: postgresql-0.postgresql
+              value: localhost
 
-            - name: SAMPLE_CONFIG_POSTGRESQL_TABLE
-              valueFrom:
-                configMapKeyRef:
-                  name: database-config
-                  key: table_name
 
             - name: SAMPLE_CONFIG_POSTGRESQL_PASSWORD
               valueFrom:

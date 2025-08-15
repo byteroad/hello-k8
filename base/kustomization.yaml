@@ -2,23 +2,21 @@
 # Sample pygeo deployments are built from these pieces --- look into their
 # respective entries under this directory for more information
 resources:
-  - postgresql
   - pygeoapi
   - ingress.yaml
-  - ingress-ssl.yml
+  # - ingress-ssl.yml
 
 configMapGenerator:
   # Here we define the names of the PostgreSQL database and tables which will
   # store the lakes dataset.
   - name: database-config
     literals:
-      - db_name=crus
-      - table_name=crus_obidos
+      - db_name=geodb
 
 secretGenerator:
   # And here we define the credentials for the non-privileged user which
   # pygeoapi will use to connect to the lakes database.
   - name: database-credentials
     literals:
-      - username=pygeoapi
-      - password=pygeoapi
+      - username=postgres
+      - password=postgres
