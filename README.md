@@ -62,14 +62,6 @@ Create the Kubernetes namespace to host pygeoapi:
 From this directory, generate and apply the Kubernetes manifests with the
 following command:
 
-  $ kustomize build . | kubectl apply -f -
-  configmap/database-config-6dbbd6bk5k unchanged
-  configmap/pygeoapi-config-c74fh986b2 unchanged
-  secret/database-credentials-m5dk7mmmmf unchanged
-  service/pygeoapi unchanged
-  deployment.apps/pygeoapi created
-  ingress.networking.k8s.io/pygeoapi unchanged
-
     $ kustomize build . | kubectl apply -f -
     configmap/database-config-fmfm5hc2m5 created
     configmap/initdb-kcdht48dgb created
