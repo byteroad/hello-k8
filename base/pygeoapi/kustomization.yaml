@@ -22,4 +22,4 @@ configMapGenerator:
     files:
       - entrypoint.sh
       - pygeoapi-config.yaml
-      - docker.config.yaml
+#      - docker.config.yaml
