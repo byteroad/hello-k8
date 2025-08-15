@@ -16,7 +16,7 @@ spec:
             - /etc/pygeoapi/entrypoint.sh
           env:
             - name: CONTAINER_PORT
-              value: 5000
+              value: "5000"
 
             # We will use this configuration file ...
             - name: PYGEOAPI_CONFIG
