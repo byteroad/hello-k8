@@ -60,7 +60,7 @@ Create the Kubernetes namespace to host pygeoapi:
     $ kubectl create ns pygeoapi-demo
     namespace/pygeoapi-demo created
 
-Make NGINX Ingress Controller pods and services run in the pygeoapo-demo ns
+<!-- Make NGINX Ingress Controller pods and services run in the pygeoapo-demo ns
 
 Install ingres controller:
 
@@ -70,7 +70,7 @@ Install ingres controller:
 You can check that ingress is running with the following command:
 
     $ kubectl -n pygeoapi-demo get ingress
-
+ -->
 From this directory, generate and apply the Kubernetes manifests with the
 following command:
 
@@ -94,57 +94,6 @@ and we haven't loaded it yet:
     postgresql-0                1/1     Running            0             4m32s
     pygeoapi-7b5d79d6fb-hnbrt   0/1     CrashLoopBackOff   5 (71s ago)   4m32s
     pygeoapi-7b5d79d6fb-xgt7q   0/1     CrashLoopBackOff   5 (66s ago)   4m32s
-
-## Loading the CRUS Obidos dataset
-
-Once the PostgreSQL instance is up and running, use the
-[load-data](./load-data) script to feed the crus data into Kubernetes
-PostgreSQL instance:
-
-```bash
-    $ ./load-data 
-+++ dirname ./load-data
-++ cd .
-++ pwd
-+ here=/home/joana/git/hello-k8
-+ bzcat /home/joana/git/hello-k8/crus_obidos.sql.bz2
-+ kubectl -n pygeoapi-demo exec -i postgresql-0 -- psql --host localhost --user pygeoapi crus
-SET
-SET
-SET
-SET
-SET
- set_config 
-------------
- 
-(1 row)
-
-SET
-SET
-SET
-SET
-SET
-SET
-DROP INDEX
-ALTER TABLE
-ALTER TABLE
-DROP SEQUENCE
-DROP TABLE
-CREATE TABLE
-CREATE SEQUENCE
-ALTER SEQUENCE
-ALTER TABLE
-COPY 381
- setval 
--s-------
-    381
-(1 row)
-
-ALTER TABLE
-CREATE INDEX
-```
-
-![CRUS Obidos](crus-obidos.png)
 
 
 ## Restart the pygeo pods
