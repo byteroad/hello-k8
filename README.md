@@ -102,7 +102,7 @@ ingress-nginx-admission-patch-w62d9         0/1     Completed   0          93m  
 ingress-nginx-controller-659c88cdd9-b7d4w   1/1     Running     0          93m   10.244.2.49   srvquaintergeo3   <none>           <none>
 ```
 
-Get IP of that server (here, 192.168.10.130 :
+Get IP of that server (here, 192.168.10.130):
 
 ```
 $ kubectl get nodes -o wide
