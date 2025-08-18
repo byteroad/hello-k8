@@ -154,8 +154,9 @@ Recreate Flannel:
 ## Next Steps
 
 - Ask IT to open port 443 of the server
+- For now, maybe create a test instance on AWS
 - Activate SSL configuration on ingress (see [SSL](#SSL) for generating the keys)
-- ** Enable external IP with traffic on port 443 **
+- ** Enable external IP with traffic on port 443 ( use MetalLB)**
 - Install postgreSQL database on a separate server: https://github.com/byteroad/postgres-dgt
 - Update pygeoapi to publish feature collections from remote PostgreSQL database
 - Add tile services to the composition
