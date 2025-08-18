@@ -116,6 +116,34 @@ Connect to the server:
 
     $ curl 192.168.10.130:30184
 
+## Load Balancer
+
+To activate a load balancer that assigns IPs, we use MetalLB. Install with:
+
+    $ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+
+Check that is running:
+
+        $ kubectl get pods -n metallb-system
+        NAME                          READY   STATUS    RESTARTS   AGE
+        controller-654858564f-ff8wb   1/1     Running   0          15m
+        speaker-6xv9t                 1/1     Running   0          15m
+        speaker-d6ff7                 1/1     Running   0          15m
+        speaker-s6dws                 1/1     Running   0          15m
+
+Apply manifest (setting up the range of reserved IPs):
+
+        $ kubectl apply -f base/metallb-config.yaml
+
+Check that ingress is running, this time with an external IP:
+
+        $ kubectl get service -n ingress-nginx
+        NAME                                 TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)                      AGE
+        ingress-nginx-controller             LoadBalancer   10.101.67.114   192.168.10.140   80:30184/TCP,443:32064/TCP   2d19h
+        ingress-nginx-controller-admission   ClusterIP      10.98.112.13    <none>           443/TCP                      2d19h
+
+Get a rule on the router, to redirect traffic to that address to the Internet.
+
 ## Troubleshooting
 
 Delete namespace:
