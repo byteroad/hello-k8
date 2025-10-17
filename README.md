@@ -212,6 +212,7 @@ kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
 
     $ kubectl kustomize base | docker run -v "$(pwd)":/work -i philippemerle/kubediagrams kube-diagrams - -o diagram.png
 
+
 ## License
 
 This project is released under a [MIT License](./LICENSE)
