@@ -54,8 +54,12 @@ spec:
                   name: database-credentials
                   key: username
 
-            - name: SAMPLE_CONFIG_PYGEOAPI_URL
-              value: https://k8.byteroad.net/
+          # The value of the URL of this pygeoapi deployment depends on where
+          # it will be deployed to --- so we do not set it here. We will
+          # override it later, in the target-dependent definitions.
+          #
+          # - name: SAMPLE_CONFIG_PYGEOAPI_URL
+          #   value: https://example.comp
 
           ports:
             - name: http
