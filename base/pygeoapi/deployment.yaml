@@ -34,31 +34,6 @@ spec:
             - name: PYGEOAPI_OPENAPI
               value: /var/lib/pygeoapi/pygeoapi-openapi.yaml
 
-            # - name: SAMPLE_CONFIG_POSTGRESQL_DBNAME
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       name: database-config
-            #       key: db_name
-
-            # - name: SAMPLE_CONFIG_POSTGRESQL_HOST
-            #   value: localhost
-
-
-            # - name: SAMPLE_CONFIG_POSTGRESQL_PASSWORD
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: database-credentials
-            #       key: password
-
-            # - name: SAMPLE_CONFIG_POSTGRESQL_PORT
-            #   value: "5432"
-
-            # - name: SAMPLE_CONFIG_POSTGRESQL_USER
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: database-credentials
-            #       key: username
-
           # The value of the URL of this pygeoapi deployment depends on where
           # it will be deployed to --- so we do not set it here. We will
           # override it later, in the target-dependent definitions.
@@ -94,10 +69,6 @@ spec:
 
               - key: pygeoapi-config.yaml
                 path: pygeoapi-config.yaml
-
-        # - name: database-credentials
-        #   secret:
-        #     secretName: database-credentials
 
         - name: tmp
           emptyDir:

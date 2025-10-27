@@ -5,18 +5,3 @@ resources:
   - pygeoapi
   # - ingress.yaml
   - ingress-ssl.yaml
-
-configMapGenerator:
-  # Here we define the names of the PostgreSQL database and tables which will
-  # store the lakes dataset.
-  - name: database-config
-    literals:
-      - db_name=geodb
-
-secretGenerator:
-  # And here we define the credentials for the non-privileged user which
-  # pygeoapi will use to connect to the lakes database.
-  - name: database-credentials
-    literals:
-      - username=postgres
-      - password=postgres
