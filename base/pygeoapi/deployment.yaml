@@ -15,9 +15,9 @@ spec:
             - bash
             - /etc/pygeoapi/entrypoint.sh
 
-          # envFrom:
-          #   - secretRef:
-          #       name: app-secrets # The name of the Secret
+          envFrom:
+            - secretRef:
+                name: app-secrets # The name of the Secret
 
           env:
             # The pygeoapi config file expects these `SAMPLE_CONFIG_*`
