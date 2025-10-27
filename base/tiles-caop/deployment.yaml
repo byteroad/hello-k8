@@ -4,7 +4,13 @@ metadata:
   name: tiles-caop
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: tiles-caop
   template:
+    metadata:
+      labels:
+        app: tiles-caop
     spec:
       containers:
       - name: martin
