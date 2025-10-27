@@ -19,10 +19,20 @@ spec:
             - secretRef:
                 name: app-secrets # The name of the Secret
 
-
           env:
             # The pygeoapi config file expects these `SAMPLE_CONFIG_*`
             # environment variables to be set.
+
+            - name: CONTAINER_PORT
+              value: "5000"
+
+            # We will use this configuration file ...
+            - name: PYGEOAPI_CONFIG
+              value: /etc/pygeoapi/pygeoapi-config.yaml
+
+            # ... and this location for the auto-generated OpenAPI spec.
+            - name: PYGEOAPI_OPENAPI
+              value: /var/lib/pygeoapi/pygeoapi-openapi.yaml
 
             - name: SAMPLE_CONFIG_POSTGRESQL_DBNAME
               valueFrom:
