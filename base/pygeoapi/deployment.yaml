@@ -14,45 +14,40 @@ spec:
           command:
             - bash
             - /etc/pygeoapi/entrypoint.sh
-          env:
-            - name: CONTAINER_PORT
-              value: "5000"
 
-            # We will use this configuration file ...
-            - name: PYGEOAPI_CONFIG
-              value: /etc/pygeoapi/pygeoapi-config.yaml
-
-            # ... and this location for the auto-generated OpenAPI spec.
-            - name: PYGEOAPI_OPENAPI
-              value: /var/lib/pygeoapi/pygeoapi-openapi.yaml
-
-            # The pygeoapi config file expects these `SAMPLE_CONFIG_*`
-            # environment variables to be set.
-
-            - name: SAMPLE_CONFIG_POSTGRESQL_DBNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: database-config
-                  key: db_name
-
-            - name: SAMPLE_CONFIG_POSTGRESQL_HOST
-              value: localhost
+          envFrom:
+            - secretRef:
+                name: app-secrets # The name of the Secret
 
 
-            - name: SAMPLE_CONFIG_POSTGRESQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: database-credentials
-                  key: password
+          # env:
+          #   # The pygeoapi config file expects these `SAMPLE_CONFIG_*`
+          #   # environment variables to be set.
 
-            - name: SAMPLE_CONFIG_POSTGRESQL_PORT
-              value: "5432"
+          #   - name: SAMPLE_CONFIG_POSTGRESQL_DBNAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: database-config
+          #         key: db_name
 
-            - name: SAMPLE_CONFIG_POSTGRESQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: database-credentials
-                  key: username
+          #   - name: SAMPLE_CONFIG_POSTGRESQL_HOST
+          #     value: localhost
+
+
+          #   - name: SAMPLE_CONFIG_POSTGRESQL_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: database-credentials
+          #         key: password
+
+          #   - name: SAMPLE_CONFIG_POSTGRESQL_PORT
+          #     value: "5432"
+
+          #   - name: SAMPLE_CONFIG_POSTGRESQL_USER
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: database-credentials
+          #         key: username
 
           # The value of the URL of this pygeoapi deployment depends on where
           # it will be deployed to --- so we do not set it here. We will
