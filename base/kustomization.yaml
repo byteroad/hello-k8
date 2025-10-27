@@ -3,5 +3,6 @@
 # respective entries under this directory for more information
 resources:
   - pygeoapi
+  - tiles-caop
   # - ingress.yaml
   - ingress-ssl.yaml

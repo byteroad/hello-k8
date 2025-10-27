@@ -15,6 +15,8 @@ namespace: pygeoapi-demo
 images:
   - name: geopython/pygeoapi
     newTag: latest
+  - name: ghcr.io/maplibre/martin
+    newTag: latest
 
 patches:
   # We do not know in advance the IP address under which pygeoapi will be
