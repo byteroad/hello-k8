@@ -24,37 +24,37 @@ spec:
             # The pygeoapi config file expects these `SAMPLE_CONFIG_*`
             # environment variables to be set.
 
-          #   - name: SAMPLE_CONFIG_POSTGRESQL_DBNAME
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: database-config
-          #         key: db_name
+            - name: SAMPLE_CONFIG_POSTGRESQL_DBNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: database-config
+                  key: db_name
 
-          #   - name: SAMPLE_CONFIG_POSTGRESQL_HOST
-          #     value: localhost
+            - name: SAMPLE_CONFIG_POSTGRESQL_HOST
+              value: localhost
 
 
-          #   - name: SAMPLE_CONFIG_POSTGRESQL_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: database-credentials
-          #         key: password
+            - name: SAMPLE_CONFIG_POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: password
 
-          #   - name: SAMPLE_CONFIG_POSTGRESQL_PORT
-          #     value: "5432"
+            - name: SAMPLE_CONFIG_POSTGRESQL_PORT
+              value: "5432"
 
-          #   - name: SAMPLE_CONFIG_POSTGRESQL_USER
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: database-credentials
-          #         key: username
+            - name: SAMPLE_CONFIG_POSTGRESQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: username
 
           # The value of the URL of this pygeoapi deployment depends on where
           # it will be deployed to --- so we do not set it here. We will
           # override it later, in the target-dependent definitions.
           #
-          - name: SAMPLE_CONFIG_PYGEOAPI_URL
-            value: https://example.comp
+          # - name: SAMPLE_CONFIG_PYGEOAPI_URL
+          #   value: https://example.comp
 
           ports:
             - name: http
