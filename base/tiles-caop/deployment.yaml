@@ -34,7 +34,7 @@ spec:
                   name: app-secrets
                   key: REMOTE_CAOP_URL
           - name: WATCH_MODE
-            value: true
+            value: "true"
         # livenessProbe:
         #   httpGet:
         #     path: /
