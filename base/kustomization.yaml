@@ -4,5 +4,6 @@
 resources:
   - pygeoapi
   - tiles-caop
+  - tiles-inspire
   # - ingress.yaml
   - ingress-ssl.yaml
