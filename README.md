@@ -1,9 +1,12 @@
-# Kubernetes deployment of pygeoapi
+# Kubernetes deployment of OGC API DGT
+
+This projects migrates the [OGCAPI](https://github.com/dgterritorio/OGCAPI) suite of services, implemented with docker compose, towards a kubernetes based architecture.
 
 This directory contains a Kubernetes deployment of:
 
-* A [pygeoapi](https://pygeoapi.io/) instance, configured to show the some collections 
-  from [DGT](https://www.dgterritorio.gov.pt/?language=en), currently OGC API - Maps. 
+* A [pygeoapi](https://pygeoapi.io/) instance, configured to show some - and eventually, all - collections 
+  from [OGC API DGT](https://github.com/dgterritorio/OGCAPI). 
+* Tiles servers for the CAOP and cadastro collections (tiles-caop, tiles-inspire). The servers use [martin](https://github.com/maplibre/martin) a blazing fast and lightweight PostGIS tile server.
 
 The Kubernetes manifests needed to run this server are generated with
 [Kustomize](https://kustomize.io/). They build upon [a common base definition](./base/).
@@ -14,9 +17,10 @@ The Kubernetes manifests needed to run this server are generated with
 
 To deploy and run these samples you will need the following tools:
 * [Kustomize](https://kustomize.io/),
-* The [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) command-line tool, and
-* Flannel
-* Ingress
+* The [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) command-line tool,
+* [Flannel](https://github.com/flannel-io/flannel), a container networking interface (CNI) plugin,
+* [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), a resource that manages external access to services within the cluster,
+* [MetalLB](https://metallb.io/), a load balancer.
 
 ## Deplying to a local cluster
 
@@ -44,7 +48,6 @@ view its state:
         srvquaintergeo1   Ready    control-plane   6d19h   v1.33.3
         srvquaintergeo2   Ready    <none>          6d19h   v1.33.3
         srvquaintergeo3   Ready    <none>          6d19h   v1.33.3
-
 
 ## Deploy pygeoapi
 
@@ -135,6 +138,8 @@ Apply manifest (setting up the range of reserved IPs):
 
         $ kubectl apply -f base/metallb-config.yaml
 
+In this case, the set of reserved IPs is 192.168.10.140-192.168.10.150.
+
 Check that ingress is running, this time with an external IP:
 
         $ kubectl get service -n ingress-nginx
@@ -143,6 +148,19 @@ Check that ingress is running, this time with an external IP:
         ingress-nginx-controller-admission   ClusterIP      10.98.112.13    <none>           443/TCP                      2d19h
 
 Get a rule on the router, to redirect traffic to that address to the Internet.
+
+## Redeploying pygeoapi
+
+Redeploying pygeoapi and its supporting services, comes down to reapplying the manifest:
+
+    $ kustomize build . | kubectl apply -f -
+
+If you also need to restart the deployment:
+
+    $ kubectl -n pygeoapi-demo rollout restart deployment pygeoapi
+    deployment.apps/pygeoapi restarted
+
+Kubernetes takes care of reapplying the configuration with minimum downtime.
 
 ## Troubleshooting
 
@@ -178,17 +196,9 @@ Recreate Flannel:
     configmap/kube-flannel-cfg created
     daemonset.apps/kube-flannel-ds created
 
-
 ## Next Steps
 
-- Ask IT to open port 443 of the server
-- For now, maybe create a test instance on AWS
-- Activate SSL configuration on ingress (see [SSL](#SSL) for generating the keys)
-- ** Enable external IP with traffic on port 443 ( use MetalLB)**
 - Install postgreSQL database on a separate server: https://github.com/byteroad/postgres-dgt
-- Update pygeoapi to publish feature collections from remote PostgreSQL database
-- Add tile services to the composition
-- Update pygeoapi to publish tile collections from the tile services
 - Port the rest of the pygeoapi configuration
 
 ## SSL
