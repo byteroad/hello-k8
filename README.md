@@ -85,6 +85,23 @@ You can check the logs of one deployment with:
 
     $ kubectl logs -f pygeoapi-6d989df987-2v2p4 -n pygeoapi-demo
 
+## SSL
+
+Create secret in the pygeoapi-demo namespace:
+
+```bash
+kubectl create secret tls pygeoapi-tls-secret \
+  --cert=/home/byteroad/fullchain1.pem \
+  --key=/home/byteroad/privkey1.pem \
+  -n pygeoapi-demo
+```
+
+In case it exists, delete it first:
+
+```bash
+kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
+```
+
 ## Access the server
 
 Get ingress ports (here, 30184 and 32064):
@@ -200,23 +217,6 @@ Recreate Flannel:
 
 - Install postgreSQL database on a separate server: https://github.com/byteroad/postgres-dgt
 - Port the rest of the pygeoapi configuration
-
-## SSL
-
-Create secret in the pygeoapi-demo namespace:
-
-```bash
-kubectl create secret tls pygeoapi-tls-secret \
-  --cert=/home/byteroad/fullchain1.pem \
-  --key=/home/byteroad/privkey1.pem \
-  -n pygeoapi-demo
-```
-
-In case it exists, delete it first:
-
-```bash
-kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
-```
 
 ## Generate Diagrams
 
