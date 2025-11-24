@@ -217,6 +217,8 @@ Recreate Flannel:
 
 - Install postgreSQL database on a separate server: https://github.com/byteroad/postgres-dgt
 - Port the rest of the pygeoapi configuration
+- Add a tool for publishing the logs. Note: matomo is supported!
+- Add README for k8 install
 
 ## Generate Diagrams
 
