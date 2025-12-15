@@ -85,6 +85,14 @@ You can check the logs of one deployment with:
 
     $ kubectl logs -f pygeoapi-6d989df987-2v2p4 -n pygeoapi-demo
 
+## Create secrets from .env file
+
+```bash
+kubectl create secret generic app-secrets \
+  --from-env-file=.env \
+  -n pygeoapi-demo
+```
+
 ## SSL
 
 Create secret in the pygeoapi-demo namespace:
