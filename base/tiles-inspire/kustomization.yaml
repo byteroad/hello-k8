@@ -10,4 +10,4 @@ resources:
 labels:
   - includeSelectors: true
     pairs:
-      app: tiles_scalargis
+      app: tiles-inspire

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tiles_caop
+  name: tiles-caop
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: tiles_caop
+      app: tiles-caop
   template:
     metadata:
       labels:
-        app: tiles_caop
+        app: tiles-caop
     spec:
       containers:
       - name: martin

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tiles_inspire
+  name: tiles-inspire
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: tiles_inspire
+      app: tiles-inspire
   template:
     metadata:
       labels:
-        app: tiles_inspire
+        app: tiles-inspire
     spec:
       containers:
       - name: martin

@@ -3,8 +3,8 @@
 # respective entries under this directory for more information
 resources:
   - pygeoapi
-  - tiles_caop
-  - tiles_inspire
-  - tiles_scalargis
+  - tiles-caop
+  - tiles-inspire
+  - tiles-scalargis
   # - ingress.yaml
   - ingress-ssl.yaml

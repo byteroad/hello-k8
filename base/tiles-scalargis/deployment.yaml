@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tiles_scalargis
+  name: tiles-scalargis
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: tiles_scalargis
+      app: tiles-scalargis
   template:
     metadata:
       labels:
-        app: tiles_scalargis
+        app: tiles-scalargis
     spec:
       containers:
       - name: martin

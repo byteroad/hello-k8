@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tiles_inspire
+  name: tiles-caop
 spec:
   selector:
-    app: tiles_inspire
+    app: tiles-caop
   ports:
     - protocol: TCP
       port: 3000
