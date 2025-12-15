@@ -27,7 +27,7 @@ spec:
         - "--webui"
         - "disable"
         - "--default-srid"
-        - "3763"
+        - "4326"
         - "--save-config"
         - "/tmp/config.yml"
         envFrom:
@@ -41,19 +41,10 @@ spec:
                   key: REMOTE_SCALARGIS_URL
           - name: WATCH_MODE
             value: "true"
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 3000
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 3000
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
       hostAliases:
       - ip: "127.0.0.1"
         hostnames:
         - "host.docker.internal"
+
+
+
