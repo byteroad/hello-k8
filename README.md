@@ -92,6 +92,11 @@ kubectl create secret generic app-secrets \
   --from-env-file=.env \
   -n pygeoapi-demo
 ```
+In case it exists, delete it first:
+
+```bash
+kubectl delete secret app-secrets -n pygeoapi-demo
+```
 
 ## SSL
 
