@@ -26,6 +26,9 @@ spec:
             - name: CONTAINER_PORT
               value: "5000"
 
+            - name: HOST_URL
+              value: "https://k8.byteroad.net/"
+
             # We will use this configuration file ...
             - name: PYGEOAPI_CONFIG
               value: /etc/pygeoapi/pygeoapi-config.yaml
