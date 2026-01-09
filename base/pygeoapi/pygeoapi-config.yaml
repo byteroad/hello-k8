@@ -255,122 +255,6 @@ resources:
       type: tile
     title: Cadastro Predial (Continente)
     type: collection
-  # cos2018v3:
-  #   description: Carta de Uso e Ocupação do Solo (COS) 2018 - Série 2 (nova)
-  #   extents:
-  #     spatial:
-  #       bbox:
-  #       - -9.68
-  #       - 36.77
-  #       - -6.17
-  #       - 42.15
-  #       crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #     temporal:
-  #       begin: 2000-10-30T18:24:39Z
-  #       end: 2007-10-30T08:57:29Z
-  #   keywords:
-  #   - Uso do Solo
-  #   - Ocupação do Solo
-  #   - PortugaL
-  #   - COS
-  #   - '2018'
-  #   links:
-  #   - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e7d91649-71dd-4a3a-ae38-e680fc54be88
-  #     hreflang: en-US
-  #     rel: canonical
-  #     title: data
-  #     type: text/csv
-  #   providers:
-  #   - crs:
-  #     - http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #     - http://www.opengis.net/def/crs/EPSG/0/4326
-  #     - http://www.opengis.net/def/crs/EPSG/0/3857
-  #     - http://www.opengis.net/def/crs/EPSG/0/4258
-  #     - http://www.opengis.net/def/crs/EPSG/0/3763
-  #     data:
-  #       dbname: geodb
-  #       host: postgis
-  #       user: ${POSTGRES_USER}
-  #       search_path:
-  #       - public
-  #     geom_field: geometry
-  #     id_field: objectid
-  #     name: PostgreSQL
-  #     storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #     table: cos2018v3
-  #     type: feature
-  #   - data: http://tiles:3000/cos2018v3/{z}/{x}/{y}?f=mvt
-  #     format:
-  #       mimetype: application/vnd.mapbox-vector-tile
-  #       name: pbf
-  #     name: MVT-proxy
-  #     options:
-  #       schemes:
-  #       - WebMercatorQuad
-  #       zoom:
-  #         max: 15
-  #         min: 0
-  #     type: tile
-  #   title: COS2018v3-S2
-  #   type: collection
-  # cos2023v1:
-  #   description: Carta de Uso e Ocupação do Solo (COS) 2023 - Série 2 (nova)
-  #   extents:
-  #     spatial:
-  #       bbox:
-  #       - -9.68
-  #       - 36.77
-  #       - -6.17
-  #       - 42.15
-  #       crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #     temporal:
-  #       begin: 2000-10-30T18:24:39Z
-  #       end: 2007-10-30T08:57:29Z
-  #   keywords:
-  #   - Uso do Solo
-  #   - Ocupação do Solo
-  #   - PortugaL
-  #   - COS
-  #   - '2023'
-  #   links:
-  #   - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e7d91649-71dd-4a3a-ae38-e680fc54be88
-  #     hreflang: en-US
-  #     rel: canonical
-  #     title: data
-  #     type: text/csv
-  #   providers:
-  #   - crs:
-  #     - http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #     - http://www.opengis.net/def/crs/EPSG/0/4326
-  #     - http://www.opengis.net/def/crs/EPSG/0/3857
-  #     - http://www.opengis.net/def/crs/EPSG/0/4258
-  #     - http://www.opengis.net/def/crs/EPSG/0/3763
-  #     data:
-  #       dbname: geodb
-  #       host: postgis
-  #       user: ${POSTGRES_USER}
-  #       search_path:
-  #       - public
-  #     geom_field: geometry
-  #     id_field: objectid
-  #     name: PostgreSQL
-  #     storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #     table: cos2023v1
-  #     type: feature
-  #   - data: http://tiles:3000/cos2023v1/{z}/{x}/{y}?f=mvt
-  #     format:
-  #       mimetype: application/vnd.mapbox-vector-tile
-  #       name: pbf
-  #     name: MVT-proxy
-  #     options:
-  #       schemes:
-  #       - WebMercatorQuad
-  #       zoom:
-  #         max: 15
-  #         min: 0
-  #     type: tile
-  #   title: COS2023v1-S2
-  #   type: collection
   municipios:
     description: Carta Administrativa Oficial de Portugal, Continente, 2024.1. Municípios
     extents:
@@ -2749,114 +2633,114 @@ resources:
         layer: 2025-set-IRG
         style: default
         version: 1.3.0
-  # cos2018v3:
-  #   type: collection
-  #   title: COS2018v3-S2
-  #   description:  Carta de Uso e Ocupação do Solo (COS) 2018 - Série 2 (nova)
-  #   keywords:
-  #     - Uso do Solo
-  #     - Ocupação do Solo
-  #     - PortugaL
-  #     - COS
-  #     - '2018'
-  #   links:
-  #       - type: text/csv
-  #         rel: canonical
-  #         title: data
-  #         href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e7d91649-71dd-4a3a-ae38-e680fc54be88
-  #         hreflang: en-US
-  #   extents:
-  #       spatial:
-  #           bbox: [-9.6800, 36.77, -6.1700, 42.1500]
-  #           crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #       temporal:
-  #           begin: 2000-10-30T18:24:39Z
-  #           end: 2007-10-30T08:57:29Z
-  #   providers:
-  #       - type: feature
-  #         name: PostgreSQL
-  #         data:
-  #               host: postgis
-  #               dbname: geodb
-  #               user: ${POSTGRES_USER}
-  #               password: ${POSTGRES_PASSWORD}
-  #               search_path: [public]
-  #         id_field: objectid
-  #         table: cos2018v3
-  #         geom_field: geometry
-  #         crs:
-  #             - http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #             - http://www.opengis.net/def/crs/EPSG/0/4326
-  #             - http://www.opengis.net/def/crs/EPSG/0/3857
-  #             - http://www.opengis.net/def/crs/EPSG/0/4258
-  #             - http://www.opengis.net/def/crs/EPSG/0/3763
-  #         storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #       - type: tile
-  #         name: MVT-proxy
-  #         data: http://tiles:3000/cos2018v3/{z}/{x}/{y}?f=mvt
-  #         options:
-  #           zoom:
-  #               min: 0
-  #               max: 15
-  #           schemes:
-  #           - WebMercatorQuad
-  #         format:
-  #               name: pbf
-  #               mimetype: application/vnd.mapbox-vector-tile
-  # cos2023v1:
-  #   type: collection
-  #   title: COS2023v1-S2
-  #   description:  Carta de Uso e Ocupação do Solo (COS) 2023 - Série 2 (nova)
-  #   keywords:
-  #       - Uso do Solo
-  #       - Ocupação do Solo
-  #       - PortugaL
-  #       - COS
-  #       - '2023'
-  #   links:
-  #       - type: text/csv
-  #         rel: canonical
-  #         title: data
-  #         href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e7d91649-71dd-4a3a-ae38-e680fc54be88
-  #         hreflang: en-US
-  #   extents:
-  #       spatial:
-  #           bbox: [-9.6800, 36.77, -6.1700, 42.1500]
-  #           crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #       temporal:
-  #           begin: 2000-10-30T18:24:39Z
-  #           end: 2007-10-30T08:57:29Z
-  #   providers:
-  #       - type: feature
-  #         name: PostgreSQL
-  #         data:
-  #               host: postgis
-  #               dbname: geodb
-  #               user: ${POSTGRES_USER}
-  #               password: ${POSTGRES_PASSWORD}
-  #               search_path: [public]
-  #         id_field: objectid
-  #         table: cos2023v1
-  #         geom_field: geometry
-  #         crs:
-  #             - http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #             - http://www.opengis.net/def/crs/EPSG/0/4326
-  #             - http://www.opengis.net/def/crs/EPSG/0/3857
-  #             - http://www.opengis.net/def/crs/EPSG/0/4258
-  #             - http://www.opengis.net/def/crs/EPSG/0/3763
-  #         storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-  #       - type: tile
-  #         name: MVT-proxy
-  #         data: http://tiles:3000/cos2023v1/{z}/{x}/{y}?f=mvt
-  #         options:
-  #           zoom:
-  #               min: 0
-  #               max: 15
-  #           schemes:
-  #           - WebMercatorQuad
-  #         format:
-  #               name: pbf
-  #               mimetype: application/vnd.mapbox-vector-tile
+  cos2018v3:
+    type: collection
+    title: COS2018v3-S2
+    description:  Carta de Uso e Ocupação do Solo (COS) 2018 - Série 2 (nova)
+    keywords:
+      - Uso do Solo
+      - Ocupação do Solo
+      - PortugaL
+      - COS
+      - '2018'
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e7d91649-71dd-4a3a-ae38-e680fc54be88
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.6800, 36.77, -6.1700, 42.1500]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 2000-10-30T18:24:39Z
+            end: 2007-10-30T08:57:29Z
+    providers:
+        - type: feature
+          name: PostgreSQL
+          data:
+                host: postgis
+                dbname: geodb
+                user: ${POSTGRES_USER}
+                password: ${POSTGRES_PASSWORD}
+                search_path: [public]
+          id_field: objectid
+          table: cos2018v3
+          geom_field: geometry
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+          storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles:3000/cos2018v3/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  cos2023v1:
+    type: collection
+    title: COS2023v1-S2
+    description:  Carta de Uso e Ocupação do Solo (COS) 2023 - Série 2 (nova)
+    keywords:
+        - Uso do Solo
+        - Ocupação do Solo
+        - PortugaL
+        - COS
+        - '2023'
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e7d91649-71dd-4a3a-ae38-e680fc54be88
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.6800, 36.77, -6.1700, 42.1500]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 2000-10-30T18:24:39Z
+            end: 2007-10-30T08:57:29Z
+    providers:
+        - type: feature
+          name: PostgreSQL
+          data:
+                host: postgis
+                dbname: geodb
+                user: ${POSTGRES_USER}
+                password: ${POSTGRES_PASSWORD}
+                search_path: [public]
+          id_field: objectid
+          table: cos2023v1
+          geom_field: geometry
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+          storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles:3000/cos2023v1/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
   crus:
     type: collection
     title: CRUS Portugal Continental
@@ -2890,7 +2774,7 @@ resources:
                 password: ${REMOTE_SCALARGIS_PASSWORD}
                 search_path: 
                   - "mapaspt"
-          id_field: objectid
+          id_field: fid
           table: crus
           geom_field: geom
           crs:
@@ -2911,9 +2795,9 @@ resources:
           format:
                 name: pbf
                 mimetype: application/vnd.mapbox-vector-tile
-  srup_reserva_ecologica_nacional:
+  srup_ren_areal:
     type: collection
-    title: SRUP - Reserva Ecológica Nacional
+    title: SRUP - Reserva Ecológica Nacional - Áreas
     description: Servidão e Restrição de Utilidade Pública (SRUP) - Reserva Ecológica Nacional (REN), em vigor em Portugal Continental.
     keywords:
         - SRUP
@@ -2950,8 +2834,8 @@ resources:
                 password: ${REMOTE_SCALARGIS_PASSWORD}
                 search_path: 
                   - "mapaspt"
-          id_field: ogc_fid
-          table: ren_areas
+          id_field: fid
+          table: srup_ren_areal
           geom_field: geom
           crs:
               - http://www.opengis.net/def/crs/OGC/1.3/CRS84
@@ -2961,7 +2845,7 @@ resources:
               - http://www.opengis.net/def/crs/EPSG/0/3763
         - type: tile
           name: MVT-proxy
-          data: http://tiles-scalargis:3000/ren_areas/{z}/{x}/{y}?f=mvt
+          data: http://tiles-scalargis:3000/srup_ren_areal/{z}/{x}/{y}?f=mvt
           options:
             zoom:
                 min: 0
@@ -2971,7 +2855,67 @@ resources:
           format:
                 name: pbf
                 mimetype: application/vnd.mapbox-vector-tile
-  srup_reserva_agricola_nacional:
+  srup_ren_linear:
+    type: collection
+    title: SRUP - Reserva Ecológica Nacional - Linhas
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Reserva Ecológica Nacional (REN), em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - REN
+        - Reserva Ecológica Nacional
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/ad95b02a-fbd2-4b8e-89b6-f699a9ff3c0d
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    limits:
+      default_items: 50
+      max_items: 500
+      on_exceed: throttle
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_ren_linear
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_ren_linear/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_ran:
     type: collection
     title: SRUP - Reserva Agrícola Nacional
     description: Servidão e Restrição de Utilidade Pública (SRUP) - Reserva Agrícola Nacional (RAN), em vigor em Portugal Continental.
@@ -3010,8 +2954,8 @@ resources:
                 password: ${REMOTE_SCALARGIS_PASSWORD}
                 search_path: 
                   - "mapaspt"
-          id_field: ogc_fid
-          table: srup_reserva_agricola_nacional_v
+          id_field: fid
+          table: srup_ran
           geom_field: geom
           crs:
               - http://www.opengis.net/def/crs/OGC/1.3/CRS84
@@ -3021,7 +2965,7 @@ resources:
               - http://www.opengis.net/def/crs/EPSG/0/3763
         - type: tile
           name: MVT-proxy
-          data: http://tiles-scalargis:3000/srup_reserva_agricola_nacional_v/{z}/{x}/{y}?f=mvt
+          data: http://tiles-scalargis:3000/srup_ran/{z}/{x}/{y}?f=mvt
           options:
             zoom:
                 min: 0
@@ -3066,8 +3010,8 @@ resources:
                 password: ${REMOTE_SCALARGIS_PASSWORD}
                 search_path: 
                   - "mapaspt"
-          id_field: ogc_fid
-          table: srup_serv_areas_protegidas_v
+          id_field: fid
+          table: srup_areas_protegidas
           geom_field: geom
           crs:
               - http://www.opengis.net/def/crs/OGC/1.3/CRS84
@@ -3077,7 +3021,562 @@ resources:
               - http://www.opengis.net/def/crs/EPSG/0/3763
         - type: tile
           name: MVT-proxy
-          data: http://tiles-scalargis:3000/srup_serv_areas_protegidas_v/{z}/{x}/{y}?f=mvt
+          data: http://tiles-scalargis:3000/srup_areas_protegidas/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_arvores_areal:
+    type: collection
+    title: SRUP - Árvores de Interesse Público - Áreas
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Árvores de Interesse Público, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - AIP
+        - Árvores de Interesse Público
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/5f1fd08d-e404-4fa2-a4db-54632e57da31
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_arvores_areal
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_arvores_areal/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_arvores_point:
+    type: collection
+    title: SRUP - Árvores de Interesse Público - Pontos
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Árvores de Interesse Público, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - AIP
+        - Árvores de Interesse Público
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/5f1fd08d-e404-4fa2-a4db-54632e57da31
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_arvores_point
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_arvores_point/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_marcos_geod:
+    type: collection
+    title: SRUP - Marcos Geodésicos
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Marcos Geodésicos, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - MG
+        - MARCOS GEODÉSICOS
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/15447243-5307-4f25-908a-5d40eafcd862
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_marcos_geod
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_marcos_geod/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_aeronautica:
+    type: collection
+    title: SRUP - Aeroportos e Aeródromos - Aeronautica
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Aeroportos e Aeródromos, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - AA
+        - AEROPORTOS E AERÓDROMOS
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/49672683-cea0-4854-be7a-afa5eb7e448a
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_aeronautica
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_aeronautica/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_albufeiras:
+    type: collection
+    title: SRUP - Albufeiras de águas públicas classificadas
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Albufeiras de Águas Públicas Classificadas, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - AAPC
+        - ALBUFEIRAS DE ÁGUAS PÚBLICAS CLASSIFICADAS
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/e62e0267-b32b-43bb-b953-7731f9a886f4
+          hreflang: en-US
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_albufeiras
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_albufeiras/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_aquiferos:
+    type: collection
+    title: SRUP - Captação de águas subterrâneas para abastecimento público
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Captações de Águas Subterrâneas para Abastecimento Público, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - CASAP
+        - CAPTAÇÕES DE ÁGUAS SUBTERRÂNEAS PARA ABASTECIMENTO PÚBLICO
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/bcf660bf-9832-4134-a475-700974dcdd5e
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_aquiferos
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_aquiferos/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_defesa_militar:
+    type: collection
+    title: SRUP - Defesa Nacional - Defesa Militar
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Defesa Nacional, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - DN
+        - DEFESA NACIONAL 
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/c8ab6171-c1e7-4133-ae65-82f18835fdde
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_defesa_militar
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_defesa_militar/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_defesa_militar_zonas:
+    type: collection
+    title: SRUP - Defesa Nacional - Defesa Militar Zonas
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Defesa Nacional, em vigor em Portugal Continental.
+    keywords:
+        - SRUP
+        - DN
+        - DEFESA NACIONAL 
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/c8ab6171-c1e7-4133-ae65-82f18835fdde
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_defesa_militar_zonas
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_defesa_militar_zonas/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_zpe:
+    type: collection
+    title: SRUP - Rede Natura 2000 - Zonas de Proteção Especial - Áreas
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Rede Natura 2000 - Zonas de Proteção Especial, em vigor em Portugal Continental. A Rede Natura 2000 - Zonas de Proteção Especial são uma servidão e restrição de utilidade pública.
+    keywords:
+        - SRUP
+        - RN2000 - ZPE
+        - REDE NATURA 2000 - ZONAS DE PROTEÇÃO ESPECIAL
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/a56f0425-3967-4c59-bdde-95a79958ab73
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_zpe
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_zpe/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_zec:
+    type: collection
+    title: SRUP - Rede Natura 2000 - Zonas Especiais de Conservação
+    description: Servidão e Restrição de Utilidade Pública (SRUP) - Rede Natura 2000 - Zonas Especiais de Conservação, em vigor em Portugal Continental. A Rede Natura 2000 - Zonas Especiais de Conservação são uma servidão e restrição de utilidade pública.
+    keywords:
+        - SRUP
+        - RN2000 - ZEC
+        - REDE NATURA 2000 - ZONAS ESPECIAIS DE CONSERVAÇÃO
+        - DGT
+        - Cartografia Oficial
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0c23461e-3a64-4651-b4e7-7c013e3728d4
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin: 
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path: 
+                  - "mapaspt"
+          id_field: fid
+          table: srup_zec
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_zec/{z}/{x}/{y}?f=mvt
           options:
             zoom:
                 min: 0
