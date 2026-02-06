@@ -201,7 +201,7 @@ Delete namespace:
 
 Reload ingress:
 
-    $ kubectl apply -f base/ingress-ssl.yml
+    $ kubectl apply -f base/ingress-ssl.yaml
 
 Restart the pygeoapi pods:
 
