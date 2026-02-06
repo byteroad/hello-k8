@@ -29,11 +29,11 @@ logging:
 metadata:
   identification:
     title:
-      pt: Serviço OGC API da DGT
-      en: OGC API Service from DGT
+      pt: Serviço k8 OGC API da DGT
+      en: K8 OGC API Service from DGT
     description:
-      pt: Plataforma de publicação de dados abertos da DGT em OGC API
-      en: Plattform for publishing Open Data from DGT in OGC API
+      pt: Plataforma kubernetes de publicação de dados abertos da DGT em OGC API
+      en: Kubernetes Plattform for publishing Open Data from DGT in OGC API
     keywords:
       pt:
       - DGT
