@@ -22,5 +22,6 @@ configMapGenerator:
     files:
       - entrypoint.sh
       - pygeoapi-config.yaml
-      - templates
+      - templates/_base.html
+      - templates/landing_page.html
       - Logo_DGT.png
