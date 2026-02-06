@@ -53,6 +53,14 @@ spec:
               mountPath: /etc/pygeoapi
               readOnly: true
 
+            - name: config
+              mountPath: /templates
+
+            - name: config
+              mountPath: /pygeoapi/pygeoapi/static/img/Logo_DGT.png
+              subPath: Logo_DGT.png
+              readOnly: true
+
             - name: tmp
               mountPath: /tmp
 
@@ -72,6 +80,7 @@ spec:
 
               - key: pygeoapi-config.yaml
                 path: pygeoapi-config.yaml
+
 
         - name: tmp
           emptyDir:
