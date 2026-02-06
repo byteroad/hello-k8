@@ -86,6 +86,15 @@ spec:
               - key: pygeoapi-config.yaml
                 path: pygeoapi-config.yaml
 
+              - key: _base.html
+                path: _base.html
+
+              - key: landing_page.html
+                path: landing_page.html
+                
+              - key: Logo_DGT.png
+                path: Logo_DGT.png
+
 
         - name: tmp
           emptyDir:
