@@ -55,11 +55,11 @@ spec:
 
             - name: config
               mountPath: /templates/_base.html
-              subPath: ./templates/_base.html
+              subPath: _base.html
 
             - name: config
               mountPath: /templates/landing_page.html
-              subPath: ./templates/landing_page.html
+              subPath: landing_page.html
 
             - name: config
               mountPath: /pygeoapi/pygeoapi/static/img/Logo_DGT.png
