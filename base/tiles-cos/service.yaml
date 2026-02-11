@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tiles-cos
+spec:
+  selector:
+    app: tiles-cos
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
