@@ -292,6 +292,7 @@ resources:
         host: ${REMOTE_COS_HOST}
         port: ${REMOTE_COS_PORT}
         user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
         search_path:
         - public
       geom_field: geometry
@@ -351,6 +352,7 @@ resources:
         host: ${REMOTE_COS_HOST}
         port: ${REMOTE_COS_PORT}
         user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
         search_path:
         - public
       geom_field: geometry
