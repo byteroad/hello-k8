@@ -6,5 +6,6 @@ resources:
   - tiles-caop
   - tiles-inspire
   - tiles-scalargis
+  - tiles-cos
   # - ingress.yaml
   - ingress-ssl.yaml
