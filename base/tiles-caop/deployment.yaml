@@ -28,8 +28,8 @@ spec:
         - "disable"
         - "--default-srid"
         - "3763"
-        - "--save-config"
-        - "/tmp/config.yml"
+        - "--config"
+        - "/config/config.yaml"
         envFrom:
           - secretRef:
               name: app-secrets # The name of the Secret
@@ -53,7 +53,14 @@ spec:
         #     port: 3000
         #   initialDelaySeconds: 5
         #   periodSeconds: 5
+
       hostAliases:
       - ip: "127.0.0.1"
         hostnames:
         - "host.docker.internal"
+
+      volumeMounts:
+        - name: config
+          mountPath: /config/config.yaml
+          subPath: config-caop.yml
+          readOnly: true
