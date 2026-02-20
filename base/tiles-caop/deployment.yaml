@@ -41,6 +41,24 @@ spec:
                   key: REMOTE_CAOP_URL
           - name: WATCH_MODE
             value: "true"
+
+        volumeMounts:
+          - name: config
+            mountPath: /config/config.yaml
+            subPath: config-caop.yml
+            readOnly: true
+
+        securityContext:
+          readOnlyRootFilesystem: true
+
+      volumes:
+        - name: config
+          configMap:
+            name: caop-config
+            items:
+              - key: config-caop.yml
+                path: config-caop.yml
+
         # livenessProbe:
         #   httpGet:
         #     path: /
@@ -59,8 +77,3 @@ spec:
         hostnames:
         - "host.docker.internal"
 
-      volumeMounts:
-        - name: config
-          mountPath: /config/config.yaml
-          subPath: config-caop.yml
-          readOnly: true

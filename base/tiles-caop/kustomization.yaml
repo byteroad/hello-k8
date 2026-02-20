@@ -11,8 +11,3 @@ labels:
   - includeSelectors: true
     pairs:
       app: tiles-caop
-
-configMapGenerator:
-  - name: martin-config
-    files:
-      - config-caop.yml
