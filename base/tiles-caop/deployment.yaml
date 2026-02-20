@@ -45,32 +45,16 @@ spec:
         volumeMounts:
           - name: config
             mountPath: /config/config.yaml
-            subPath: config-caop.yml
+            subPath: config-caop.yaml
             readOnly: true
 
         securityContext:
           readOnlyRootFilesystem: true
 
       volumes:
-        - name: config
-          configMap:
-            name: caop-config
-            items:
-              - key: config-caop.yml
-                path: config-caop.yml
-
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 3000
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 3000
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
+              - name: config
+                configMap:
+                  name: caop-config
 
       hostAliases:
       - ip: "127.0.0.1"
