@@ -6,7 +6,7 @@ This directory contains a Kubernetes deployment of:
 
 * A [pygeoapi](https://pygeoapi.io/) instance, configured to show some - and eventually, all - collections 
   from [OGC API DGT](https://github.com/dgterritorio/OGCAPI). 
-* Tiles servers for the CAOP and cadastro collections (tiles-caop, tiles-inspire). The servers use [martin](https://github.com/maplibre/martin) a blazing fast and lightweight PostGIS tile server.
+* Tiles servers for the CAOP and cadastro collections (tiles-caop, tiles-inspire, tiles-scalargis, tiles-cos). The servers use [martin](https://github.com/maplibre/martin) a blazing fast and lightweight PostGIS tile server.
 
 The Kubernetes manifests needed to run this server are generated with
 [Kustomize](https://kustomize.io/). They build upon [a common base definition](./base/).
