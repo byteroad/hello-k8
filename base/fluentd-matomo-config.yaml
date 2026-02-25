@@ -17,7 +17,7 @@ data:
 
     <match nginx.access>
       @type http
-      endpoint "#{ENV['MATOMO_URL']}/matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=http%3A%2F%2F${record['host']}${record['path']}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${record['remote']}&ua=${record['agent']}"
+      endpoint "#{ENV['MATOMO_URL']}/matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=http%3A%2F%2F${host}${path}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${remote}&ua=${agent}"
       tls_verify_mode none
       <format>
         @type json
@@ -31,3 +31,4 @@ data:
           retry_forever true
         </buffer>
     </match>
+
