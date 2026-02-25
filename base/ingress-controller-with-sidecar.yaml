@@ -116,6 +116,7 @@ spec:
         env:
         - name: MATOMO_URL
           value: "https://logs.dgterritorio.gov.pt/"
+        - name: MATOMO_SITE_ID
           value: "4"
         - name: MATOMO_TOKEN
           valueFrom:
