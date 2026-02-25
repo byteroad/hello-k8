@@ -179,6 +179,32 @@ Check that ingress is running, this time with an external IP:
 
 Get a rule on the router, to redirect traffic to that address to the Internet.
 
+## Applying sidecar
+
+Sidecar is running a container that reads the nginx logs and sends them to matomo.
+
+First we need to create a secret that stores the matomo token (replace [SOME TOKEN] by your matomo token):
+
+    kubectl create secret generic matomo-credentials -n ingress-nginx --from-literal=token='[SOME TOKEN]'
+
+Then apply the ingress controller and fluentd configuration:
+
+    kubectl apply -f ingress-controller-with-sidecar.yaml
+
+    kubectl apply -f fluentd-matomo-config.yaml
+
+Rollout restart ingress with:
+
+    kubectl rollout restart deployment ingress-nginx-contller -n ingress-nginx
+
+If you need to check the ingress logs, first get the name of the pod:
+
+    kubectl get pods -n ingress-nginx
+
+And then:
+
+    kubectl logs -f -n ingress-nginx ingress-nginx-controller-6f7f884f45-6gnb7 -c fluentd-sidecar
+
 ## Redeploying pygeoapi
 
 Redeploying pygeoapi and its supporting services, comes down to reapplying the manifest:
