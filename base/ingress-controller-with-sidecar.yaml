@@ -109,10 +109,6 @@ spec:
         # ADDED: Mount for the shared log volume
         - name: ingress-logs
           mountPath: /var/log/nginx
-        - name: fluentd-sidecar
-          volumeMounts:
-          - name: fluentd-pos
-            mountPath: /var/log/fluentd-pos/
 
       # ADDED: This is the new Fluentd sidecar container
       - name: fluentd-sidecar
@@ -136,6 +132,8 @@ spec:
           readOnly: true
         - name: fluentd-config
           mountPath: /fluentd/etc
+        - name: fluentd-pos
+          mountPath: /var/log/fluentd-pos/
 
       # --- End of container definitions ---
       dnsPolicy: ClusterFirst
