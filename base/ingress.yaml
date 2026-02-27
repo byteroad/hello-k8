@@ -8,6 +8,10 @@ metadata:
   namespace: pygeoapi-demo
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Robots-Tag "noindex, nofollow";
+data:
+  allow-snippet-annotations: "true"
 spec:
   ingressClassName: nginx
   rules:
