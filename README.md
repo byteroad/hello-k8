@@ -220,6 +220,10 @@ Kubernetes takes care of reapplying the configuration with minimum downtime.
 
 ## Troubleshooting
 
+Patch ingress config map to allow code snippets:
+
+    kubectl patch configmap ingress-nginx-controller -n ingress-nginx --type merge -p '{"data":{"allow-snippet-annotations":"true","annotations-risk-level":"Critical"}}'
+
 Delete namespace:
 
     kubectl delete namespace pygeoapi-demo
