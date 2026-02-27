@@ -238,6 +238,10 @@ Restart the pygeoapi pods:
     kubectl -n pygeoapi-demo rollout restart deployment pygeoapi
     deployment.apps/pygeoapi restarted
 
+Reapply changes in the configuration:
+
+kubectl apply -k . -n pygeoapi-demo
+
 Recreate Flannel:
 
     kubectl delete -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
