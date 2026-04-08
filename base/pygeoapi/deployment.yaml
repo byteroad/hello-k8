@@ -10,7 +10,7 @@ spec:
       containers:
         - name: pygeoapi
           # We use this pygeoapi version by default.
-          image: geopython/pygeoapi:latest
+          image: geopython/pygeoapi:0.23.2
           command:
             - bash
             - /etc/pygeoapi/entrypoint.sh
