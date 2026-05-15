@@ -195,7 +195,7 @@ Then apply the ingress controller and fluentd configuration:
 
 Rollout restart ingress with:
 
-    kubectl rollout restart deployment ingress-nginx-contller -n ingress-nginx
+    kubectl rollout restart deployment ingress-nginx-controller -n ingress-nginx
 
 If you need to check the ingress logs, first get the name of the pod:
 
