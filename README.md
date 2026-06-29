@@ -51,6 +51,8 @@ view its state:
 
 ## Deploy pygeoapi
 
+**Note: before starting the deployment, make sure that the IPs of all the nodes are authorised in the databases (e.g.: `inspire`, `cos`, `caop`); failure to do so will trigger errors on the pygeoapi and tiles pods!**
+
 If you need to reset a previous installation, go to [troubleshooting](#troubleshooting).
 
 Create the Kubernetes namespace to host pygeoapi:
@@ -85,6 +87,27 @@ You can check the logs of one deployment with:
 
     kubectl logs -f pygeoapi-6d989df987-2v2p4 -n ogcapi
 
+## Install Ingress
+
+    mkdir -p /tmp/ingress-install
+    cd /tmp/ingress-install
+    curl -o deploy.yaml https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+
+Save this as /tmp/ingress-install/kustomization.yaml:
+
+    apiVersion: kustomize.config.k8s.io/v1beta1
+    kind: Kustomization
+
+    # This line forces every resource into your namespace
+    namespace: ogcapi
+
+    resources:
+    - deploy.yaml
+
+Apply:
+
+    kubectl apply -k .
+
 ## Create secrets from .env file
 
 ```bash
@@ -117,37 +140,41 @@ kubectl delete secret pygeoapi-tls-secret -n ogcapi
 
 ## Access the server
 
-Get ingress ports (here, 30184 and 32064):
+Get ingress ports (here, 31356 and 30244):
 
 ```
-kubectl get service -n ingress-nginx NAME                                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
-ingress-nginx-controller             LoadBalancer   10.101.67.114   <pending>     80:30184/TCP,443:32064/TCP   90m
-ingress-nginx-controller-admission   ClusterIP      10.98.112.13    <none>        443/TCP                      90m         
+kubectl get service -n ogcapi
+NAME                                 TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                     AGE
+ingress-nginx-controller             LoadBalancer   10.100.243.63   <pending>     80:31356/TCP,443:30244/TCP  46m
+ingress-nginx-controller-admission   ClusterIP      10.111.8.54     <none>        443/TCP                     46m
+...
 ```
 
-Check where ingress is running (here, srvquaintergeo3):
+Check where ingress is running (here, vmintergeo2):
 
 ```
-kubectl get pods -n ingress-nginx -o wide
-NAME                                        READY   STATUS      RESTARTS   AGE   IP            NODE              NOMINATED NODE   READINESS GATES
-ingress-nginx-admission-create-rrgz6        0/1     Completed   0          93m   10.244.2.48   srvquaintergeo3   <none>           <none>
-ingress-nginx-admission-patch-w62d9         0/1     Completed   0          93m   10.244.2.47   srvquaintergeo3   <none>           <none>
-ingress-nginx-controller-659c88cdd9-b7d4w   1/1     Running     0          93m   10.244.2.49   srvquaintergeo3   <none>           <none>
-```
+kubectl get pods -n ogcapi -o wide
 
-Get IP of that server (here, 192.168.10.130):
+NAME                                        READY   STATUS             RESTARTS         AGE   IP            NODE          NOMINATED NODE   READINESS GATES
+ingress-nginx-admission-create-55f5j        0/1     Completed          0                50m   10.244.2.7    vmintergeo3   <none>           <none>
+ingress-nginx-admission-patch-b9bj2         0/1     Completed          1                50m   10.244.2.8    vmintergeo3   <none>           <none>
+ingress-nginx-controller-6d675964ff-x8gd6   1/1     Running            0                50m   10.244.1.7    vmintergeo2   <none>           <none>
+
+
+Get IP of that server (here, 192.168.2.42):
 
 ```
 kubectl get nodes -o wide
-NAME              STATUS   ROLES           AGE    VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION     CONTAINER-RUNTIME
-srvquaintergeo1   Ready    control-plane   104m   v1.33.3   192.168.10.128   <none>        Ubuntu 24.04.2 LTS   6.8.0-71-generic   containerd://1.7.27
-srvquaintergeo2   Ready    <none>          99m    v1.33.3   192.168.10.129   <none>        Ubuntu 24.04.2 LTS   6.8.0-71-generic   containerd://1.7.27
-srvquaintergeo3   Ready    <none>          97m    v1.33.3   192.168.10.130   <none>        Ubuntu 24.04.2 LTS   6.8.0-71-generic   containerd://1.7.27
+NAME          STATUS   ROLES           AGE    VERSION    INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+vmintergeo1   Ready    control-plane   134m   v1.30.14   192.168.2.41   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
+vmintergeo2   Ready    <none>          110m   v1.30.14   192.168.2.42   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
+vmintergeo3   Ready    <none>          94m    v1.30.14   192.168.2.43   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
+
 ```
 
 Connect to the server:
 
-    curl 192.168.10.130:30184
+    curl 192.168.2.42:31356
 
 ## Load Balancer
 
@@ -159,14 +186,33 @@ Check that is running:
 
         kubectl get pods -n metallb-system
         NAME                          READY   STATUS    RESTARTS   AGE
-        controller-654858564f-ff8wb   1/1     Running   0          15m
-        speaker-6xv9t                 1/1     Running   0          15m
-        speaker-d6ff7                 1/1     Running   0          15m
-        speaker-s6dws                 1/1     Running   0          15m
+        controller-86f5578878-klxq8   0/1     Running   0          14s
+        speaker-52x8n                 0/1     Running   0          14s
+        speaker-qtpqg                 0/1     Running   0          14s
+        speaker-sbhtr                 0/1     Running   0          14s
 
 Apply manifest (setting up the range of reserved IPs):
 
         kubectl apply -f base/metallb-config.yaml
+
+Set range of reserved IPs to 192.168.2.240-192.168.2.250:
+
+    cat <<EOF | kubectl apply -f -
+    apiVersion: metallb.io/v1beta1
+    kind: IPAddressPool
+    metadata:
+    name: first-pool
+    namespace: metallb-system
+    spec:
+    addresses:
+    - 192.168.2.240-192.168.2.250
+    EOF
+
+Confirm the set of reserved IPs:
+
+    kubectl get ipaddresspool -n metallb-system
+    NAME         AUTO ASSIGN   AVOID BUGGY IPS   ADDRESSES
+    first-pool   true          false             ["192.168.10.140-192.168.10.150"]
 
 In this case, the set of reserved IPs is 192.168.10.140-192.168.10.150.
 
