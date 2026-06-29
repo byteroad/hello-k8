@@ -152,25 +152,21 @@ ingress-nginx-controller-admission   ClusterIP      10.111.8.54     <none>      
 
 Check where ingress is running (here, vmintergeo2):
 
-```
-kubectl get pods -n ogcapi -o wide
+    kubectl get pods -n ogcapi -o wide
 
-NAME                                        READY   STATUS             RESTARTS         AGE   IP            NODE          NOMINATED NODE   READINESS GATES
-ingress-nginx-admission-create-55f5j        0/1     Completed          0                50m   10.244.2.7    vmintergeo3   <none>           <none>
-ingress-nginx-admission-patch-b9bj2         0/1     Completed          1                50m   10.244.2.8    vmintergeo3   <none>           <none>
-ingress-nginx-controller-6d675964ff-x8gd6   1/1     Running            0                50m   10.244.1.7    vmintergeo2   <none>           <none>
+    NAME                                        READY   STATUS             RESTARTS         AGE   IP            NODE          NOMINATED NODE   READINESS GATES
+    ingress-nginx-admission-create-55f5j        0/1     Completed          0                50m   10.244.2.7    vmintergeo3   <none>           <none>
+    ingress-nginx-admission-patch-b9bj2         0/1     Completed          1                50m   10.244.2.8    vmintergeo3   <none>           <none>
+    ingress-nginx-controller-6d675964ff-x8gd6   1/1     Running            0                50m   10.244.1.7    vmintergeo2   <none>           <none>
 
 
 Get IP of that server (here, 192.168.2.42):
 
-```
-kubectl get nodes -o wide
-NAME          STATUS   ROLES           AGE    VERSION    INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-vmintergeo1   Ready    control-plane   134m   v1.30.14   192.168.2.41   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
-vmintergeo2   Ready    <none>          110m   v1.30.14   192.168.2.42   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
-vmintergeo3   Ready    <none>          94m    v1.30.14   192.168.2.43   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
-
-```
+    kubectl get nodes -o wide
+    NAME          STATUS   ROLES           AGE    VERSION    INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+    vmintergeo1   Ready    control-plane   134m   v1.30.14   192.168.2.41   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
+    vmintergeo2   Ready    <none>          110m   v1.30.14   192.168.2.42   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
+    vmintergeo3   Ready    <none>          94m    v1.30.14   192.168.2.43   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.1
 
 Connect to the server:
 
@@ -184,16 +180,16 @@ To activate a load balancer that assigns IPs, we use MetalLB. Install with:
 
 Check that is running:
 
-        kubectl get pods -n metallb-system
-        NAME                          READY   STATUS    RESTARTS   AGE
-        controller-86f5578878-klxq8   0/1     Running   0          14s
-        speaker-52x8n                 0/1     Running   0          14s
-        speaker-qtpqg                 0/1     Running   0          14s
-        speaker-sbhtr                 0/1     Running   0          14s
+    kubectl get pods -n metallb-system
+    NAME                          READY   STATUS    RESTARTS   AGE
+    controller-86f5578878-klxq8   0/1     Running   0          14s
+    speaker-52x8n                 0/1     Running   0          14s
+    speaker-qtpqg                 0/1     Running   0          14s
+    speaker-sbhtr                 0/1     Running   0          14s
 
 Apply manifest (setting up the range of reserved IPs):
 
-        kubectl apply -f base/metallb-config.yaml
+    kubectl apply -f base/metallb-config.yaml
 
 Set range of reserved IPs to 192.168.2.240-192.168.2.250:
 
