@@ -55,8 +55,8 @@ If you need to reset a previous installation, go to [troubleshooting](#troublesh
 
 Create the Kubernetes namespace to host pygeoapi:
 
-    kubectl create ns pygeoapi-demo
-    namespace/pygeoapi-demo created
+    kubectl create ns ogcapi
+    namespace/ogcapi created
 
 From this directory, generate and apply the Kubernetes manifests with the
 following command:
@@ -75,7 +75,7 @@ following command:
 Check the pods are up and running:
 
 ```
-  kubectl -n pygeoapi-demo get pods
+  kubectl -n ogcapi get pods
   NAME                        READY   STATUS    RESTARTS   AGE
   pygeoapi-6d989df987-2v2p4   1/1     Running   0          9m1s
   pygeoapi-6d989df987-klkwb   1/1     Running   0          9m1s
@@ -83,36 +83,36 @@ Check the pods are up and running:
 
 You can check the logs of one deployment with:
 
-    kubectl logs -f pygeoapi-6d989df987-2v2p4 -n pygeoapi-demo
+    kubectl logs -f pygeoapi-6d989df987-2v2p4 -n ogcapi
 
 ## Create secrets from .env file
 
 ```bash
 kubectl create secret generic app-secrets \
   --from-env-file=.env \
-  -n pygeoapi-demo
+  -n ogcapi
 ```
 In case it exists, delete it first:
 
 ```bash
-kubectl delete secret app-secrets -n pygeoapi-demo
+kubectl delete secret app-secrets -n ogcapi
 ```
 
 ## SSL
 
-Create secret in the pygeoapi-demo namespace:
+Create secret in the ogcapi namespace:
 
 ```bash
 kubectl create secret tls pygeoapi-tls-secret \
   --cert=/home/byteroad/fullchain1.pem \
   --key=/home/byteroad/privkey1.pem \
-  -n pygeoapi-demo
+  -n ogcapi
 ```
 
 In case it exists, delete it first:
 
 ```bash
-kubectl delete secret pygeoapi-tls-secret -n pygeoapi-demo
+kubectl delete secret pygeoapi-tls-secret -n ogcapi
 ```
 
 ## Access the server
@@ -213,7 +213,7 @@ Redeploying pygeoapi and its supporting services, comes down to reapplying the m
 
 If you also need to restart the deployment:
 
-    kubectl -n pygeoapi-demo rollout restart deployment pygeoapi
+    kubectl -n ogcapi rollout restart deployment pygeoapi
     deployment.apps/pygeoapi restarted
 
 Kubernetes takes care of reapplying the configuration with minimum downtime.
@@ -226,8 +226,8 @@ Patch ingress config map to allow code snippets:
 
 Delete namespace:
 
-    kubectl delete namespace pygeoapi-demo
-    namespace "pygeoapi-demo" deleted
+    kubectl delete namespace ogcapi
+    namespace "ogcapi" deleted
 
 Reload ingress:
 
@@ -235,12 +235,12 @@ Reload ingress:
 
 Restart the pygeoapi pods:
 
-    kubectl -n pygeoapi-demo rollout restart deployment pygeoapi
+    kubectl -n ogcapi rollout restart deployment pygeoapi
     deployment.apps/pygeoapi restarted
 
 Reapply changes in the configuration:
 
-kubectl apply -k . -n pygeoapi-demo
+kubectl apply -k . -n ogcapi
 
 Recreate Flannel:
 

@@ -8,7 +8,7 @@ resources:
   # directory
   - ./base
 
-namespace: pygeoapi-demo
+namespace: ogcapi
 
 # Here we should how you may override any of the container images involved inventory:
 # this sample, in case wtou need to do so.
