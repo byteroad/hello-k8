@@ -1241,23 +1241,6 @@ postgres:
         nivel_limite_admin: varchar
         paises: varchar
         significado_linha: varchar
-    ebm_a:
-      schema: master
-      table: ebm_a
-      srid: 4258
-      geometry_column: geometry
-      bounds:
-      - -31.534799000000163
-      - 29.82587599999985
-      - -6.189352000000184
-      - 42.15441899999985
-      geometry_type: MULTIPOLYGON
-      properties:
-        ICC: text
-        InspireId: text
-        SHN: text
-        TAA: varchar
-        beginLifeSpanVersion: timestamp
     ebm_a_2024:
       schema: euroboundaries
       table: ebm_a_2024
