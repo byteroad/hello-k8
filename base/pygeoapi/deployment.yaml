@@ -24,7 +24,7 @@ spec:
             # environment variables to be set.
 
             - name: PYGEOAPI_OPENAPI_GENERATE_FAIL_ON_INVALID_COLLECTION
-              value: "0false"
+              value: "false"
 
             - name: CONTAINER_PORT
               value: "5000"
