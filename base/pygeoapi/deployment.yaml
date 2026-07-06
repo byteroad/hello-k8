@@ -23,6 +23,9 @@ spec:
             # The pygeoapi config file expects these `SAMPLE_CONFIG_*`
             # environment variables to be set.
 
+            - name: PYGEOAPI_OPENAPI_GENERATE_FAIL_ON_INVALID_COLLECTION
+              value: false
+
             - name: CONTAINER_PORT
               value: "5000"
 
