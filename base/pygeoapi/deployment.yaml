@@ -24,7 +24,7 @@ spec:
             # environment variables to be set.
 
             - name: PYGEOAPI_OPENAPI_GENERATE_FAIL_ON_INVALID_COLLECTION
-              value: "0"
+              value: "0false"
 
             - name: CONTAINER_PORT
               value: "5000"
@@ -65,8 +65,8 @@ spec:
               subPath: landing_page.html
 
             - name: config
-              mountPath: /pygeoapi/pygeoapi/static/img/Logo_DGT.png
-              subPath: Logo_DGT.png
+              mountPath: /pygeoapi/pygeoapi/static/img/intergeopt-prr.png
+              subPath: intergeopt-prr.png
               readOnly: true
 
             - name: tmp
@@ -95,8 +95,8 @@ spec:
               - key: landing_page.html
                 path: landing_page.html
                 
-              - key: Logo_DGT.png
-                path: Logo_DGT.png
+              - key: intergeopt-prr.png
+                path: intergeopt-prr.png
 
 
         - name: tmp
