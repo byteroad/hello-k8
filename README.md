@@ -237,15 +237,15 @@ Then apply the ingress controller and fluentd configuration:
 
 Rollout restart ingress with:
 
-    kubectl rollout restart deployment ingress-nginx-controller -n ingress-nginx
+    kubectl rollout restart deployment ingress-nginx-controller -n ogcapi
 
 If you need to check the ingress logs, first get the name of the pod:
 
-    kubectl get pods -n ingress-nginx
+    kubectl get pods -n ogcapi
 
 And then:
 
-    kubectl logs -f -n ingress-nginx ingress-nginx-controller-6f7f884f45-6gnb7 -c fluentd-sidecar
+    kubectl logs -f -n ogcapi ingress-nginx-controller-6f7f884f45-6gnb7 -c fluentd-sidecar
 
 ## Redeploying pygeoapi
 
