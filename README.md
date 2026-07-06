@@ -231,9 +231,9 @@ First we need to create a secret that stores the matomo token (replace [SOME TOK
 
 Then apply the ingress controller and fluentd configuration:
 
-    kubectl apply -f ingress-controller-with-sidecar.yaml
+    kubectl apply -f base/ingress-controller-with-sidecar.yaml
 
-    kubectl apply -f fluentd-matomo-config.yaml
+    kubectl apply -f base/fluentd-matomo-config.yaml
 
 Rollout restart ingress with:
 

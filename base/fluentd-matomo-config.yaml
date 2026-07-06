@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: fluentd-matomo-config
-  namespace: ingress-nginx
+  namespace: ogcapi
 data:
   fluent.conf: |
     <source>
