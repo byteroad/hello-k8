@@ -227,7 +227,7 @@ Sidecar is running a container that reads the nginx logs and sends them to matom
 
 First we need to create a secret that stores the matomo token (replace [SOME TOKEN] by your matomo token):
 
-    kubectl create secret generic matomo-credentials -n ingress-nginx --from-literal=token='[SOME TOKEN]'
+    kubectl create secret generic matomo-credentials -n ogcapi --from-literal=token='[SOME TOKEN]'
 
 Then apply the ingress controller and fluentd configuration:
 

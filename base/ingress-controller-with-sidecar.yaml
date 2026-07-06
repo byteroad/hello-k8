@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.10.1
   name: ingress-nginx-controller
-  namespace: ingress-nginx
+  namespace: ogcapi
 spec:
   replicas: 1
   selector:
