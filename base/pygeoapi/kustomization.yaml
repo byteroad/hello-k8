@@ -24,4 +24,4 @@ configMapGenerator:
       - pygeoapi-config.yaml
       - _base.html
       - landing_page.html
-      - Logo_DGT.png
+      - intergeopt-prr.png
