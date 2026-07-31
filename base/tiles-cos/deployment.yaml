@@ -23,7 +23,7 @@ spec:
         - "--keep-alive"
         - "200"
         - "--pool-size"
-        - "20"
+        - "5"
         - "--webui"
         - "disable"
         - "--default-srid"
