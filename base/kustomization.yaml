@@ -4,7 +4,7 @@
 resources:
   - pygeoapi
   - tiles-caop
-  - tiles-inspire
+  # - tiles-inspire
   - tiles-scalargis
   - tiles-cos
   # - ingress.yaml
