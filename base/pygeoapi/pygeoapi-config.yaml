@@ -241,7 +241,7 @@ resources:
       storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
       table: cadastralparcel
       type: feature
-    - data: http://tiles:3000/cadastralparcel/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-cos:3000/cadastralparcel/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -305,7 +305,7 @@ resources:
       storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
       table: cos2018v4
       type: feature
-    - data: http://tiles:3000/cos2018v4/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-cos:3000/cos2018v4/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -369,7 +369,7 @@ resources:
       storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
       table: cos2025v1
       type: feature
-    - data: http://tiles:3000/cos2025v1/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-cos:3000/cos2025v1/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
