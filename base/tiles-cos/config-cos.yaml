@@ -21,7 +21,7 @@ postgres:
       table: cadastralparcel
       srid: 4326
       geometry_column: geometry
-      id_column: nationalcadastralreference
+      id_column: id
       bounds:
       - -9.499050804036969
       - 36.99350227610016
