@@ -46,6 +46,7 @@ postgres:
       table: cos2018v4
       srid: 4326
       geometry_column: geometry
+      id_column: objectid
       bounds:
       - -9.792798339770734
       - 36.73084522642644
@@ -69,6 +70,7 @@ postgres:
       table: cos2025v1
       srid: 4326
       geometry_column: geometry
+      id_column: objectid
       bounds:
       - -9.792798339770734
       - 36.73084522642644
