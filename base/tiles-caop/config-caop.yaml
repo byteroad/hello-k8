@@ -8,7 +8,7 @@ postgres:
   pool_size: 20
   auto_publish:
     from_schemas:
-    - caop2025
+    - CAOP2025
   tables:
     arqacores_gcentral_troco_caop2022:
       schema: temp
