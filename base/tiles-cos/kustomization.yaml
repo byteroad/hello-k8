@@ -11,3 +11,8 @@ labels:
   - includeSelectors: true
     pairs:
       app: tiles-cos
+
+configMapGenerator:
+  - name: cos-config
+    files:
+      - config-cos.yaml

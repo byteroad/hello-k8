@@ -1,0 +1,89 @@
+cache:
+  size_mb: 8092
+  expiry: 23h
+keep_alive: 600
+web_ui: disable
+postgres:
+  pool_size: 20
+  reload_interval: 23h
+  connection_string: postgresql://${REMOTE_COS_USER}:${REMOTE_COS_PASSWORD}@192.168.2.40:5432/geodb
+  default_srid: 4326
+  auto_bounds: calc
+  auto_publish:
+    from_schemas:
+      - public
+    functions:
+      from_schemas:
+        - public
+  tables:
+    cadastralparcel:
+      schema: public
+      table: cadastralparcel
+      srid: 4326
+      geometry_column: geometry
+      bounds:
+      - -9.499050804036969
+      - 36.99350227610016
+      - -6.419221510790907
+      - 41.46712859139252
+      geometry_type: MULTIPOLYGON
+      properties:
+        administrativeunit: text
+        areavalue: float8
+        beginlifespanversion: timestamptz
+        endlifespanversion: timestamp
+        id: int4
+        inspireid: text
+        label: text
+        nationalcadastralreference: text
+        validfrom: timestamp
+        validto: timestamp
+    cos2018v4:
+      buffer: 128
+      clip_geom: false
+      schema: public
+      table: cos2018v4
+      srid: 4326
+      geometry_column: geometry
+      bounds:
+      - -9.792798339770734
+      - 36.73084522642644
+      - -6.189159307482949
+      - 42.154311127409436
+      geometry_type: MULTIPOLYGON
+      properties:
+        Area_ha: float8
+        ID: int4
+        cos18v4_n1_c: text
+        cos18v4_n1_l: text
+        cos18v4_n2_c: text
+        cos18v4_n2_l: text
+        cos18v4_n3_c: text
+        cos18v4_n3_l: text
+        cos18v4_n4_c: text
+        cos18v4_n4_l: text
+        objectid: int8
+    cos2025v1:
+      schema: public
+      table: cos2025v1
+      srid: 4326
+      geometry_column: geometry
+      bounds:
+      - -9.792798339770734
+      - 36.73084522642644
+      - -6.189159307482949
+      - 42.154311127409436
+      geometry_type: MULTIPOLYGON
+      properties:
+        Area_ha: float8
+        ID: int4
+        cos25v1_n1_c: text
+        cos25v1_n1_l: text
+        cos25v1_n2_c: text
+        cos25v1_n2_l: text
+        cos25v1_n3_c: text
+        cos25v1_n3_l: text
+        cos25v1_n4_c: text
+        cos25v1_n4_l: text
+        objectid: int8
+  functions: {}

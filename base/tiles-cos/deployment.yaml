@@ -16,20 +16,22 @@ spec:
       - name: martin
         image: ghcr.io/maplibre/martin
         args:
-        - "--auto-bounds"
-        - "calc"
-        - "--cache-size"
-        - "2048"
-        - "--keep-alive"
-        - "200"
-        - "--pool-size"
-        - "5"
-        - "--webui"
-        - "disable"
-        - "--default-srid"
-        - "3763"
-        - "--save-config"
-        - "/tmp/config.yml"
+        # - "--auto-bounds"
+        # - "calc"
+        # - "--cache-size"
+        # - "2048"
+        # - "--keep-alive"
+        # - "200"
+        # - "--pool-size"
+        # - "5"
+        # - "--webui"
+        # - "disable"
+        # - "--default-srid"
+        # - "3763"
+        # - "--save-config"
+        # - "/tmp/config.yml"
+        - "--config"
+        - "/config/config.yaml"
         envFrom:
           - secretRef:
               name: app-secrets # The name of the Secret
@@ -41,6 +43,21 @@ spec:
                   key: REMOTE_COS_URL
           - name: WATCH_MODE
             value: "true"
+
+        volumeMounts:
+          - name: config
+            mountPath: /config/config.yaml
+            subPath: config-cos.yaml
+            readOnly: true
+
+        securityContext:
+          readOnlyRootFilesystem: true
+
+      volumes:
+              - name: config
+                configMap:
+                  name: cos-config
+
         # livenessProbe:
         #   httpGet:
         #     path: /
