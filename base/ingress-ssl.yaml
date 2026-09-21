@@ -25,3 +25,47 @@ spec:
                 name: pygeoapi
                 port:
                   name: http
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ogcapi-workshop-external
+  namespace: ogcapi
+spec:
+  type: ExternalName
+  externalName: ogcapi-workshop.ogc.org
+  ports:
+    - name: https
+      port: 443
+      targetPort: 443
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ogcapi-workshop-proxy
+  namespace: ogcapi
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/upstream-vhost: ogcapi-workshop.ogc.org
+    nginx.ingress.kubernetes.io/proxy-ssl-server-name: "on"
+    nginx.ingress.kubernetes.io/proxy-ssl-name: ogcapi-workshop.ogc.org
+    nginx.ingress.kubernetes.io/proxy-redirect-from: "https://ogcapi-workshop.ogc.org/"
+    nginx.ingress.kubernetes.io/proxy-redirect-to: "https://k8.byteroad.net/ogcapi-workshop/"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - k8.byteroad.net
+      secretName: pygeoapi-tls-secret
+  rules:
+    - host: k8.byteroad.net
+      http:
+        paths:
+          - path: /ogcapi-workshop(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ogcapi-workshop-external
+                port:
+                  number: 443
