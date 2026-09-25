@@ -22,7 +22,7 @@ data:
       <format>
         @type json
       </format>
-      <buffer host,path,remote,agent>
+      <buffer>
           @type memory
           flush_interval 10s
           chunk_limit_size 2M
