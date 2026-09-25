@@ -15,14 +15,22 @@ data:
       </parse>
     </source>
 
+    <filter nginx.access>
+      @type record_transformer
+      enable_ruby true
+      <record>
+        encoded_path ${URI::DEFAULT_PARSER.escape(record["path"])}
+      </record>
+    </filter>
+
     <match nginx.access>
       @type http
-      endpoint "#{ENV['MATOMO_URL']}/matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=http%3A%2F%2F${host}${path}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${remote}&ua=${agent}"
+      endpoint "#{ENV['MATOMO_URL']}/matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=http%3A%2F%2F${host}${encoded_path}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${remote}&ua=${agent}"
       tls_verify_mode none
       <format>
         @type json
       </format>
-      <buffer host,path,remote,agent>
+      <buffer host,encoded_path,remote,agent>
           @type memory
           flush_interval 10s
           chunk_limit_size 2M
@@ -31,4 +39,3 @@ data:
           retry_forever true
         </buffer>
     </match>
-
