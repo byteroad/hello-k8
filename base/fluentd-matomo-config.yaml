@@ -10,25 +10,42 @@ data:
       path /var/log/nginx/access.log
       pos_file /var/log/fluentd-pos/nginx.pos
       tag nginx.access
+
       <parse>
-        @type nginx
+        @type regexp
+        expression /^(?<remote>[^ ]*) [^ ]* [^ ]* \[(?<time>[^\]]*)\] "(?<method>\S+) (?<path>[^ ]*) \S+" (?<code>[^ ]*) (?<size>[^ ]*) "(?<referer>[^"]*)" "(?<agent>[^"]*)".*$/
+        time_key time
+        time_format %d/%b/%Y:%H:%M:%S %z
       </parse>
     </source>
 
+    <filter nginx.access>
+      @type record_transformer
+      enable_ruby true
+
+      <record>
+        matomo_url ${URI.encode_uri_component("https://k8.byteroad.net#{record["path"]}")}
+      </record>
+    </filter>
+
     <match nginx.access>
       @type http
-      endpoint "#{ENV['MATOMO_URL']}/matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=http%3A%2F%2F${host}${path}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${remote}&ua=${agent}"
+
+      endpoint "#{ENV['MATOMO_URL']}matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=${matomo_url}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${remote}&ua=${agent}"
+
       tls_verify_mode none
+
       <format>
         @type json
       </format>
-      <buffer>
-          @type memory
-          flush_interval 10s
-          chunk_limit_size 2M
-          queue_limit_length 32
-          retry_max_interval 30
-          retry_forever true
-        </buffer>
-    </match>
 
+      <buffer matomo_url,remote,agent>
+        @type memory
+        flush_interval 10s
+        chunk_limit_size 2M
+        queue_limit_length 32
+        retry_max_interval 30
+        retry_forever true
+      </buffer>
+    </match>
+```

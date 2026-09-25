@@ -115,7 +115,7 @@ spec:
         image: fluent/fluentd:v1.14-1
         env:
         - name: MATOMO_URL
-          value: "https://logs.dgterritorio.gov.pt"
+          value: "https://logs.dgterritorio.gov.pt/"
         - name: MATOMO_SITE_ID
           value: "4"
         - name: MATOMO_TOKEN
