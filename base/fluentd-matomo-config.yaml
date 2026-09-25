@@ -48,4 +48,3 @@ data:
         retry_forever true
       </buffer>
     </match>
-```
