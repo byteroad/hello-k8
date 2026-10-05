@@ -44,11 +44,11 @@ spec:
           - name: WATCH_MODE
             value: "true"
 
-        volumeMounts:
-          - name: config
-            mountPath: /config/config.yaml
-            subPath: config-tiles.yaml
-            readOnly: true
+        # volumeMounts:
+        #   - name: config
+        #     mountPath: /config/config.yaml
+        #     subPath: config-tiles.yaml
+        #     readOnly: true
 
         securityContext:
           readOnlyRootFilesystem: true
@@ -56,7 +56,7 @@ spec:
       volumes:
               - name: config
                 configMap:
-                  name: config-tiles
+                  name: tiles-config
 
         # livenessProbe:
         #   httpGet:

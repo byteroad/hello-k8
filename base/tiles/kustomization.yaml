@@ -12,7 +12,7 @@ labels:
     pairs:
       app: tiles
 
-configMapGenerator:
-  - name: config-tiles
-    files:
-      - config-tiles.yaml
+# configMapGenerator:
+#   - name: tiles-config
+#     files:
+#       - config-tiles.yaml
