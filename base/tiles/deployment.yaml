@@ -50,13 +50,13 @@ spec:
         #     subPath: config-tiles.yaml
         #     readOnly: true
 
-        securityContext:
-          readOnlyRootFilesystem: true
+      #   securityContext:
+      #     readOnlyRootFilesystem: true
 
-      volumes:
-              - name: config
-                configMap:
-                  name: tiles-config
+      # volumes:
+      #         - name: config
+      #           configMap:
+      #             name: tiles-config
 
         # livenessProbe:
         #   httpGet:
