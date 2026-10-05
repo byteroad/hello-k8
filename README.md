@@ -51,7 +51,7 @@ view its state:
 
 ## Deploy pygeoapi
 
-**Note: before starting the deployment, make sure that the IPs of all the nodes are authorised in the databases (e.g.: `inspire`, `cos`, `caop`); failure to do so will trigger errors on the pygeoapi and tiles pods!**
+**Note: before starting the deployment, make sure that the IPs of all the nodes are authorised in the databases (e.g.: `scalar-gis`, `cos`, `caop`); failure to do so will trigger errors on the pygeoapi and tiles pods!**
 
 If you need to reset a previous installation, go to [troubleshooting](#troubleshooting).
 
