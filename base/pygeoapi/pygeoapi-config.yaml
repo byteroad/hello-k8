@@ -243,7 +243,7 @@ resources:
       storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
       table: cadastralparcel
       type: feature
-    - data: http://tiles-cos:3000/cadastralparcel/{z}/{x}/{y}?f=mvt
+    - data: http://tiles:3000/cadastralparcel/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -257,8 +257,72 @@ resources:
       type: tile
     title: Cadastro Predial (Continente)
     type: collection
+  cos2018v3:
+    description: Carta de Uso e Ocupação do Solo (COS) - Série 2 - (2018v3 - 2023v1)
+    extents:
+      spatial:
+        bbox:
+        - -9.68
+        - 36.77
+        - -6.17
+        - 42.15
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2000-10-30T18:24:39Z
+        end: 2007-10-30T08:57:29Z
+    keywords:
+    - Uso do Solo
+    - Ocupação do Solo
+    - PortugaL
+    - COS
+    - '2018'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/9a9c5548-eb27-48a2-b850-09d3c9069b2d
+      hreflang: en-US
+      rel: canonical
+      title: data
+      type: text/csv
+    limits:
+      default_items: 100
+      max_items: 500
+      on_exceed: throttle
+    providers:
+    - crs:
+      - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      - http://www.opengis.net/def/crs/EPSG/0/4326
+      - http://www.opengis.net/def/crs/EPSG/0/3857
+      - http://www.opengis.net/def/crs/EPSG/0/4258
+      - http://www.opengis.net/def/crs/EPSG/0/3763
+      data:
+        dbname: ${REMOTE_COS_DB}
+        host: ${REMOTE_COS_HOST}
+        port: ${REMOTE_COS_PORT}
+        user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
+        search_path:
+        - public
+      geom_field: geometry
+      id_field: objectid
+      name: PostgreSQL
+      storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      table: cos2018v3
+      type: feature
+    - data: http://tiles:3000/cos2018v3/{z}/{x}/{y}?f=mvt
+      format:
+        mimetype: application/vnd.mapbox-vector-tile
+        name: pbf
+      name: MVT-proxy
+      options:
+        schemes:
+        - WebMercatorQuad
+        zoom:
+          max: 15
+          min: 0
+      type: tile
+    title: COS2018v3-S2
+    type: collection
   cos2018v4:
-    description: Carta de Uso e Ocupação do Solo (COS) 2018 - Série 2 (nova)
+    description: Carta de Uso e Ocupação do Solo (COS) - Série 2 - (2018v4 - 2025v1)
     extents:
       spatial:
         bbox:
@@ -307,7 +371,7 @@ resources:
       storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
       table: cos2018v4
       type: feature
-    - data: http://tiles-cos:3000/cos2018v4/{z}/{x}/{y}?f=mvt
+    - data: http://tiles:3000/cos2018v4/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -321,8 +385,72 @@ resources:
       type: tile
     title: COS2018v4-S2
     type: collection
+  cos2023v1:
+    description: Carta de Uso e Ocupação do Solo (COS) - Série 2 - (2018v3 - 2023v1)
+    extents:
+      spatial:
+        bbox:
+        - -9.68
+        - 36.77
+        - -6.17
+        - 42.15
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2000-10-30T18:24:39Z
+        end: 2007-10-30T08:57:29Z
+    keywords:
+    - Uso do Solo
+    - Ocupação do Solo
+    - PortugaL
+    - COS
+    - '2023'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/9a9c5548-eb27-48a2-b850-09d3c9069b2d
+      hreflang: en-US
+      rel: canonical
+      title: data
+      type: text/csv
+    limits:
+      default_items: 100
+      max_items: 500
+      on_exceed: throttle
+    providers:
+    - crs:
+      - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      - http://www.opengis.net/def/crs/EPSG/0/4326
+      - http://www.opengis.net/def/crs/EPSG/0/3857
+      - http://www.opengis.net/def/crs/EPSG/0/4258
+      - http://www.opengis.net/def/crs/EPSG/0/3763
+      data:
+        dbname: ${REMOTE_COS_DB}
+        host: ${REMOTE_COS_HOST}
+        port: ${REMOTE_COS_PORT}
+        user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
+        search_path:
+        - public
+      geom_field: geometry
+      id_field: objectid
+      name: PostgreSQL
+      storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      table: cos2023v1
+      type: feature
+    - data: http://tiles:3000/cos2023v1/{z}/{x}/{y}?f=mvt
+      format:
+        mimetype: application/vnd.mapbox-vector-tile
+        name: pbf
+      name: MVT-proxy
+      options:
+        schemes:
+        - WebMercatorQuad
+        zoom:
+          max: 15
+          min: 0
+      type: tile
+    title: COS2023v1-S2
+    type: collection
   cos2025v1:
-    description: Carta de Uso e Ocupação do Solo (COS) 2025 - Série 2 (nova)
+    description: Carta de Uso e Ocupação do Solo (COS) - Série 2 - (2018v4 - 2025v1)
     extents:
       spatial:
         bbox:
@@ -371,7 +499,7 @@ resources:
       storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
       table: cos2025v1
       type: feature
-    - data: http://tiles-cos:3000/cos2025v1/{z}/{x}/{y}?f=mvt
+    - data: http://tiles:3000/cos2025v1/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -923,6 +1051,39 @@ resources:
       title_field: title
     title: PoInT
     type: collection
+  snig-hvd:
+    description: OGC API que permite a descoberta e acesso a metadados catalogados como HVD – Conjuntos de Dados de Elevado Valor
+    extents:
+      spatial:
+        bbox:
+        - -9.51
+        - 36.96
+        - -6.19
+        - 42.15
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: null
+        end: null
+    keywords:
+    - Metadados
+    - Catálogo
+    - SNIG
+    - HVD
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/home
+      hreflang: en-US
+      rel: canonical
+      title: data
+      type: text/csv
+    providers:
+    - type: record
+      name: CSWFacade
+      data: https://snig.dgterritorio.gov.pt/rndg/srv/eng/csw-hvd?request=GetCapabilities&service=CSW
+      id_field: identifier
+      time_field: datetime
+      title_field: title
+    title: SNIG-HVD
+    type: collection
   cosc2018:
     type: collection
     title: Carta de Ocupação do Solo Conjuntural - 2018
@@ -1178,6 +1339,112 @@ resources:
       data: https://geo2.dgterritorio.gov.pt/wms/COSc2023
       options:
         layer: COSc2023
+        style: default
+        version: 1.3.0
+      format:
+        name: png
+        mimetype: image/png
+  COSc2024:
+    type: collection
+    title: Carta de Ocupação do Solo Conjuntural - 2024
+    description: 'A COSc foi criada com o objetivo de fornecer informação complementar à Carta de Uso e Ocupação do Solo (COS), e retrata a ocupação do solo num ano específico e não o uso do solo.'
+    keywords:
+    - Sentinel
+    - DGT
+    - Imagem de Satélite
+    - Deteção Remota
+    - Copernicus
+    - Sentinel-2
+    - Carta de ocupação do solo
+    - Cartografia temática
+    - COSsim
+    - COSsim2024
+    - COSc
+    - COSc2024
+    - SMOS
+    - '2024'
+    - infoMapAccessService
+    - infoFeatureAccessService
+    - HVD
+    - Observação da Terra e do ambiente
+    - Cartografia Oficial
+    - Ocupação do solo
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/c7d68a53-3e16-4975-bc7b-dbd4c1ef451e
+      hreflang: en-US
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/3763
+      temporal:
+        begin: null
+        end: null
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://geo2.dgterritorio.gov.pt/wms/COSc2024
+      options:
+        layer: COSc2024
+        style: default
+        version: 1.3.0
+      format:
+        name: png
+        mimetype: image/png
+  COSc2025:
+    type: collection
+    title: Carta de Ocupação do Solo Conjuntural - 2025
+    description: 'A COSc foi criada com o objetivo de fornecer informação complementar à Carta de Uso e Ocupação do Solo (COS), e retrata a ocupação do solo num ano específico e não o uso do solo.'
+    keywords:
+    - Sentinel
+    - DGT
+    - Imagem de Satélite
+    - Deteção Remota
+    - Copernicus
+    - Sentinel-2
+    - Carta de ocupação do solo
+    - Cartografia temática
+    - COSsim
+    - COSsim2025
+    - COSc
+    - COSc2025
+    - SMOS
+    - '2025'
+    - infoMapAccessService
+    - infoFeatureAccessService
+    - HVD
+    - Observação da Terra e do ambiente
+    - Cartografia Oficial
+    - Ocupação do solo
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/728c64da-b779-4316-aeb4-3cb7c2b1660c
+      hreflang: en-US
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/3763
+      temporal:
+        begin: null
+        end: null
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://geo2.dgterritorio.gov.pt/wms/COSc2025
+      options:
+        layer: COSc2025
         style: default
         version: 1.3.0
       format:
@@ -2763,6 +3030,312 @@ resources:
         layer: 2025-set-IRG
         style: default
         version: 1.3.0
+  IPSentinel2PT-out-2025-RGB:
+    type: collection
+    title: Mosaico composto por imagens Sentinel-2 de Portugal continental com resolução
+      de 10 m (Outubro 2025) - (Cor Verdadeira)
+    description: Mosaico composto por imagens Sentinel‑2 de Portugal Continental (10
+      m). Compósitos mensais produzidos para criar uma imagem livre de nuvens; produto
+      SMOS com política de dados abertos.
+    keywords:
+    - Cor Verdadeira
+    - DGT
+    - Sentinel-2
+    - SMOS
+    - Imagem de Satélite
+    - Mosaico
+    - HVD
+    - INSPIRECORE
+    - Nacional
+    - '2025'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0ed8938b-3a0a-4575-92eb-3812188f9249
+      rel: canonical
+      type: text/html
+      title: information
+      hreflang: pt-PT
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/api/records/0ed8938b-3a0a-4575-92eb-3812188f9249/formatters/snig-view
+      rel: alternate
+      type: text/html
+      title: information (snig-view)
+      hreflang: pt-PT
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/4326
+      temporal:
+        begin: 2025-01-01T00:00:00Z
+        end: 2025-12-31T23:59:00Z
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://ortos.dgterritorio.gov.pt/wms/IPSentinel2PT-2025
+      format:
+        name: png
+        mimetype: image/png
+      options:
+        layer: 2025-out-RGB
+        style: default
+        version: 1.3.0
+  IPSentinel2PT-out-2025-IRG:
+    type: collection
+    title: Mosaico composto por imagens Sentinel-2 de Portugal continental com resolução
+      de 10 m (Outubro 2025) - (Falsa Cor)
+    description: Mosaico composto por imagens Sentinel‑2 de Portugal Continental (10
+      m). Compósitos mensais produzidos para criar uma imagem livre de nuvens; produto
+      SMOS com política de dados abertos.
+    keywords:
+    - Falsa Cor
+    - DGT
+    - Sentinel-2
+    - SMOS
+    - Imagem de Satélite
+    - Mosaico
+    - HVD
+    - INSPIRECORE
+    - Nacional
+    - '2025'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0ed8938b-3a0a-4575-92eb-3812188f9249
+      rel: canonical
+      type: text/html
+      title: information
+      hreflang: pt-PT
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/api/records/0ed8938b-3a0a-4575-92eb-3812188f9249/formatters/snig-view
+      rel: alternate
+      type: text/html
+      title: information (snig-view)
+      hreflang: pt-PT
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/4326
+      temporal:
+        begin: 2025-01-01T00:00:00Z
+        end: 2025-12-31T23:59:00Z
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://ortos.dgterritorio.gov.pt/wms/IPSentinel2PT-2025
+      format:
+        name: png
+        mimetype: image/png
+      options:
+        layer: 2025-out-IRG
+        style: default
+        version: 1.3.0
+  IPSentinel2PT-nov-2025-RGB:
+    type: collection
+    title: Mosaico composto por imagens Sentinel-2 de Portugal continental com resolução
+      de 10 m (Novembro 2025) - (Cor Verdadeira)
+    description: Mosaico composto por imagens Sentinel‑2 de Portugal Continental (10
+      m). Compósitos mensais produzidos para criar uma imagem livre de nuvens; produto
+      SMOS com política de dados abertos.
+    keywords:
+    - Cor Verdadeira
+    - DGT
+    - Sentinel-2
+    - SMOS
+    - Imagem de Satélite
+    - Mosaico
+    - HVD
+    - INSPIRECORE
+    - Nacional
+    - '2025'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0ed8938b-3a0a-4575-92eb-3812188f9249
+      rel: canonical
+      type: text/html
+      title: information
+      hreflang: pt-PT
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/api/records/0ed8938b-3a0a-4575-92eb-3812188f9249/formatters/snig-view
+      rel: alternate
+      type: text/html
+      title: information (snig-view)
+      hreflang: pt-PT
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/4326
+      temporal:
+        begin: 2025-01-01T00:00:00Z
+        end: 2025-12-31T23:59:00Z
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://ortos.dgterritorio.gov.pt/wms/IPSentinel2PT-2025
+      format:
+        name: png
+        mimetype: image/png
+      options:
+        layer: 2025-nov-RGB
+        style: default
+        version: 1.3.0
+  IPSentinel2PT-nov-2025-IRG:
+    type: collection
+    title: Mosaico composto por imagens Sentinel-2 de Portugal continental com resolução
+      de 10 m (Novembro 2025) - (Falsa Cor)
+    description: Mosaico composto por imagens Sentinel‑2 de Portugal Continental (10
+      m). Compósitos mensais produzidos para criar uma imagem livre de nuvens; produto
+      SMOS com política de dados abertos.
+    keywords:
+    - Falsa Cor
+    - DGT
+    - Sentinel-2
+    - SMOS
+    - Imagem de Satélite
+    - Mosaico
+    - HVD
+    - INSPIRECORE
+    - Nacional
+    - '2025'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0ed8938b-3a0a-4575-92eb-3812188f9249
+      rel: canonical
+      type: text/html
+      title: information
+      hreflang: pt-PT
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/api/records/0ed8938b-3a0a-4575-92eb-3812188f9249/formatters/snig-view
+      rel: alternate
+      type: text/html
+      title: information (snig-view)
+      hreflang: pt-PT
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/4326
+      temporal:
+        begin: 2025-01-01T00:00:00Z
+        end: 2025-12-31T23:59:00Z
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://ortos.dgterritorio.gov.pt/wms/IPSentinel2PT-2025
+      format:
+        name: png
+        mimetype: image/png
+      options:
+        layer: 2025-nov-IRG
+        style: default
+        version: 1.3.0
+  IPSentinel2PT-dez-2025-RGB:
+    type: collection
+    title: Mosaico composto por imagens Sentinel-2 de Portugal continental com resolução
+      de 10 m (Dezembro 2025) - (Cor Verdadeira)
+    description: Mosaico composto por imagens Sentinel‑2 de Portugal Continental (10
+      m). Compósitos mensais produzidos para criar uma imagem livre de nuvens; produto
+      SMOS com política de dados abertos.
+    keywords:
+    - Cor Verdadeira
+    - DGT
+    - Sentinel-2
+    - SMOS
+    - Imagem de Satélite
+    - Mosaico
+    - HVD
+    - INSPIRECORE
+    - Nacional
+    - '2025'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0ed8938b-3a0a-4575-92eb-3812188f9249
+      rel: canonical
+      type: text/html
+      title: information
+      hreflang: pt-PT
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/api/records/0ed8938b-3a0a-4575-92eb-3812188f9249/formatters/snig-view
+      rel: alternate
+      type: text/html
+      title: information (snig-view)
+      hreflang: pt-PT
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/4326
+      temporal:
+        begin: 2025-01-01T00:00:00Z
+        end: 2025-12-31T23:59:00Z
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://ortos.dgterritorio.gov.pt/wms/IPSentinel2PT-2025
+      format:
+        name: png
+        mimetype: image/png
+      options:
+        layer: 2025-dez-RGB
+        style: default
+        version: 1.3.0
+  IPSentinel2PT-dez-2025-IRG:
+    type: collection
+    title: Mosaico composto por imagens Sentinel-2 de Portugal continental com resolução
+      de 10 m (Dezembro 2025) - (Falsa Cor)
+    description: Mosaico composto por imagens Sentinel‑2 de Portugal Continental (10
+      m). Compósitos mensais produzidos para criar uma imagem livre de nuvens; produto
+      SMOS com política de dados abertos.
+    keywords:
+    - Falsa Cor
+    - DGT
+    - Sentinel-2
+    - SMOS
+    - Imagem de Satélite
+    - Mosaico
+    - HVD
+    - INSPIRECORE
+    - Nacional
+    - '2025'
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/0ed8938b-3a0a-4575-92eb-3812188f9249
+      rel: canonical
+      type: text/html
+      title: information
+      hreflang: pt-PT
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/api/records/0ed8938b-3a0a-4575-92eb-3812188f9249/formatters/snig-view
+      rel: alternate
+      type: text/html
+      title: information (snig-view)
+      hreflang: pt-PT
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/4326
+      temporal:
+        begin: 2025-01-01T00:00:00Z
+        end: 2025-12-31T23:59:00Z
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://ortos.dgterritorio.gov.pt/wms/IPSentinel2PT-2025
+      format:
+        name: png
+        mimetype: image/png
+      options:
+        layer: 2025-dez-IRG
+        style: default
+        version: 1.3.0
   crus:
     type: collection
     title: CRUS Portugal Continental
@@ -3861,6 +4434,162 @@ resources:
           format:
                 name: pbf
                 mimetype: application/vnd.mapbox-vector-tile
+  srup_rede_viaria:
+    type: collection
+    title: SRUP - Rede Rodoviária Nacional
+    description: Rede Rodoviária Nacional.
+    keywords:
+        - SRUP
+        - DGT
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin:
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path:
+                  - "mapaspt"
+          id_field: fid
+          table: srup_rede_viaria
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_rede_viaria/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_rede_ferroviaria:
+    type: collection
+    title: SRUP - Rede Ferroviária
+    description: Rede Ferroviária.
+    keywords:
+        - SRUP
+        - DGT
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin:
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path:
+                  - "mapaspt"
+          id_field: fid
+          table: srup_rede_ferroviaria
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_rede_ferroviaria/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
+  srup_rede_ferroviaria_estacoes:
+    type: collection
+    title: SRUP - Rede Ferroviária Estações
+    description: Rede Ferroviária Estações.
+    keywords:
+        - SRUP
+        - DGT
+    links:
+        - type: text/csv
+          rel: canonical
+          title: data
+          href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search
+    extents:
+        spatial:
+            bbox: [-9.785164, 36.962833, -6.000000, 42.104653]
+            crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        temporal:
+            begin:
+            end: null
+    providers:
+        - type: feature
+          name: PostgreSQL
+          storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
+          data:
+                dbname: ${REMOTE_SCALARGIS_DB}
+                host: ${REMOTE_SCALARGIS_HOST}
+                port: ${REMOTE_SCALARGIS_PORT}
+                user: ${REMOTE_SCALARGIS_USER}
+                password: ${REMOTE_SCALARGIS_PASSWORD}
+                search_path:
+                  - "mapaspt"
+          id_field: fid
+          table: srup_rede_ferroviaria_estacoes
+          geom_field: geom
+          crs:
+              - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+              - http://www.opengis.net/def/crs/EPSG/0/4326
+              - http://www.opengis.net/def/crs/EPSG/0/3857
+              - http://www.opengis.net/def/crs/EPSG/0/4258
+              - http://www.opengis.net/def/crs/EPSG/0/3763
+        - type: tile
+          name: MVT-proxy
+          data: http://tiles-scalargis:3000/srup_rede_ferroviaria_estacoes/{z}/{x}/{y}?f=mvt
+          options:
+            zoom:
+                min: 0
+                max: 15
+            schemes:
+            - WebMercatorQuad
+          format:
+                name: pbf
+                mimetype: application/vnd.mapbox-vector-tile
   srup_rede_eletrica:
     type: collection
     title: SRUP - Rede Elétrica
@@ -3913,3 +4642,259 @@ resources:
           format:
                 name: pbf
                 mimetype: application/vnd.mapbox-vector-tile
+  altimetria_curvas_nivel:
+    type: collection
+    title: Altimetria - Curva de nível
+    description: Altimetria de Portugal Continental 1:50000 - Curvas de Nível
+    extents:
+      spatial:
+        bbox:
+        - -9.68
+        - 36.77
+        - -6.17
+        - 42.15
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2026-07-02T00:00:00Z
+        end: 2026-07-02T00:00:00Z
+    keywords:
+    - Altimetria
+    - Curvas de Nível
+    - Vértices Geodésicos
+    - INSPIRECORE
+    - DGT
+    - Cartografia Oficial
+    - infoMapAccessService
+    - infoFeatureAccessService
+    - HVD
+    - Observação da Terra e do ambiente
+    - Altitude
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/ac54bbd2b3154d37953a6b4fd1ff7249
+      hreflang: en-US
+      rel: canonical
+      title: data
+      type: text/csv
+    limits:
+      default_items: 100
+      max_items: 500
+      on_exceed: throttle
+    providers:
+    - crs:
+      - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      - http://www.opengis.net/def/crs/EPSG/0/4326
+      - http://www.opengis.net/def/crs/EPSG/0/3857
+      - http://www.opengis.net/def/crs/EPSG/0/27493
+      - http://www.opengis.net/def/crs/EPSG/0/4258
+      - http://www.opengis.net/def/crs/EPSG/0/3763
+      data:
+        dbname: ${REMOTE_COS_DB}
+        host: ${REMOTE_COS_HOST}
+        port: ${REMOTE_COS_PORT}
+        user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
+        search_path:
+        - public
+      geom_field: geometry
+      id_field: objectid
+      name: PostgreSQL
+      storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      table: CurvasNivel2D
+      type: feature
+    - data: http://tiles:3000/CurvasNivel2D/{z}/{x}/{y}?f=mvt
+      format:
+        mimetype: application/vnd.mapbox-vector-tile
+        name: pbf
+      name: MVT-proxy
+      options:
+        schemes:
+        - WebMercatorQuad
+        zoom:
+          max: 15
+          min: 0
+      type: tile
+  altimetria_pontos:
+    type: collection
+    title: Altimetria – Cota altimétrica
+    description: Altimetria de Portugal Continental 1:50000 - Pontos
+    extents:
+      spatial:
+        bbox:
+        - -9.68
+        - 36.77
+        - -6.17
+        - 42.15
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2026-07-02T00:00:00Z
+        end: 2026-07-02T00:00:00Z
+    keywords:
+    - Altimetria
+    - Pontos de Cota
+    - Vértices Geodésicos
+    - INSPIRECORE
+    - DGT
+    - Cartografia Oficial
+    - infoMapAccessService
+    - infoFeatureAccessService
+    - HVD
+    - Observação da Terra e do ambiente
+    - point
+    - Altitude
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/ac54bbd2b3154d37953a6b4fd1ff7249
+      hreflang: en-US
+      rel: canonical
+      title: data
+      type: text/csv
+    limits:
+      default_items: 100
+      max_items: 500
+      on_exceed: throttle
+    providers:
+    - crs:
+      - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      - http://www.opengis.net/def/crs/EPSG/0/4326
+      - http://www.opengis.net/def/crs/EPSG/0/3857
+      - http://www.opengis.net/def/crs/EPSG/0/27493
+      - http://www.opengis.net/def/crs/EPSG/0/4258
+      - http://www.opengis.net/def/crs/EPSG/0/3763
+      data:
+        dbname: ${REMOTE_COS_DB}
+        host: ${REMOTE_COS_HOST}
+        port: ${REMOTE_COS_PORT}
+        user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
+        search_path:
+        - public
+      geom_field: geometry
+      id_field: objectid
+      name: PostgreSQL
+      storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      table: Pontos3D
+      type: feature
+    - data: http://tiles:3000/Pontos3D/{z}/{x}/{y}?f=mvt
+      format:
+        mimetype: application/vnd.mapbox-vector-tile
+        name: pbf
+      name: MVT-proxy
+      options:
+        schemes:
+        - WebMercatorQuad
+        zoom:
+          max: 15
+          min: 0
+      type: tile
+  toponimia:
+    type: collection
+    title: Toponímia de Portugal Continental 1:200 000
+    description: A toponímia na escala 1:200 000 é constituída por topónimos de fortes, santuários, cabos, ilhas, serras e áreas edificadas.
+    extents:
+      spatial:
+        bbox:
+        - -9.68
+        - 36.77
+        - -6.17
+        - 42.15
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2026-07-02T00:00:00Z
+        end: 2026-07-02T00:00:00Z
+    keywords:
+    - INSPIRECORE
+    - DGT
+    - infoMapAccessService
+    - infoFeatureAccessService
+    - Cartografia Oficial
+    - HVD
+    - Geoespaciais
+    - Toponímia
+    - Toponímia
+    - Topónimos
+    links:
+    - href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/ac54bbd2b3154d37953a6b4fd1ff7249
+      hreflang: en-US
+      rel: canonical
+      title: data
+      type: text/csv
+    limits:
+      default_items: 100
+      max_items: 500
+      on_exceed: throttle
+    providers:
+    - crs:
+      - http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      - http://www.opengis.net/def/crs/EPSG/0/4326
+      - http://www.opengis.net/def/crs/EPSG/0/3857
+      - http://www.opengis.net/def/crs/EPSG/0/4258
+      - http://www.opengis.net/def/crs/EPSG/0/3763
+      data:
+        dbname: ${REMOTE_COS_DB}
+        host: ${REMOTE_COS_HOST}
+        port: ${REMOTE_COS_PORT}
+        user: ${REMOTE_COS_USER}
+        password: ${REMOTE_COS_PASSWORD}
+        search_path:
+        - public
+      geom_field: geometry
+      id_field: objectid
+      name: PostgreSQL
+      storage_crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      table: toponimia200k
+      type: feature
+    - data: http://tiles:3000/toponimia200k/{z}/{x}/{y}?f=mvt
+      format:
+        mimetype: application/vnd.mapbox-vector-tile
+        name: pbf
+      name: MVT-proxy
+      options:
+        schemes:
+        - WebMercatorQuad
+        zoom:
+          max: 15
+          min: 0
+      type: tile
+  Hipsometria:
+    type: collection
+    title: Hipsometria de Portugal Continental
+    description: 'Hipsometria de Portugal Continental'
+    keywords:
+    - Altimetria
+    - Modelo Digital do Terreno
+    - Hipsometria
+    - INSPIRECORE
+    - DGT
+    - Cartografia Oficial
+    - infoMapAccessService
+    - infoFeatureAccessService
+    - HVD
+    - Observação da Terra e do ambiente
+    - Altitude
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://snig.dgterritorio.gov.pt/rndg/srv/por/catalog.search#/metadata/728c64da-b779-4316-aeb4-3cb7c2b1660c
+      hreflang: en-US
+    extents:
+      spatial:
+        bbox:
+        - -10.1934
+        - 36.7643
+        - -5.70954
+        - 42.2796
+        crs: http://www.opengis.net/def/crs/EPSG/0/3763
+      temporal:
+        begin: null
+        end: null
+    providers:
+    - type: map
+      name: WMSFacade
+      data: https://geo2.dgterritorio.gov.pt/wms/hipsometria
+      options:
+        layer: Hipsometria
+        style: default
+        version: 1.3.0
+      format:
+        name: png
+        mimetype: image/png

@@ -10,9 +10,9 @@ resources:
 labels:
   - includeSelectors: true
     pairs:
-      app: tiles-cos
+      app: tiles
 
 configMapGenerator:
-  - name: cos-config
+  - name: config-tiles
     files:
-      - config-cos.yaml
+      - config-tiles.yaml

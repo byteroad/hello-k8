@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tiles-cos
+  name: tiles
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: tiles-cos
+      app: tiles
   template:
     metadata:
       labels:
-        app: tiles-cos
+        app: tiles
     spec:
       containers:
       - name: martin
         image: ghcr.io/maplibre/martin
         args:
-        # - "--auto-bounds"
-        # - "calc"
-        # - "--cache-size"
-        # - "2048"
-        # - "--keep-alive"
-        # - "200"
-        # - "--pool-size"
-        # - "5"
-        # - "--webui"
-        # - "disable"
-        # - "--default-srid"
-        # - "3763"
-        # - "--save-config"
-        # - "/tmp/config.yml"
-        - "--config"
-        - "/config/config.yaml"
+        - "--auto-bounds"
+        - "calc"
+        - "--cache-size"
+        - "2048"
+        - "--keep-alive"
+        - "200"
+        - "--pool-size"
+        - "5"
+        - "--webui"
+        - "disable"
+        - "--default-srid"
+        - "3763"
+        - "--save-config"
+        - "/tmp/config.yml"
+        # - "--config"
+        # - "/config/config.yaml"
         envFrom:
           - secretRef:
               name: app-secrets # The name of the Secret
@@ -47,7 +47,7 @@ spec:
         volumeMounts:
           - name: config
             mountPath: /config/config.yaml
-            subPath: config-cos.yaml
+            subPath: config-tiles.yaml
             readOnly: true
 
         securityContext:
@@ -56,7 +56,7 @@ spec:
       volumes:
               - name: config
                 configMap:
-                  name: cos-config
+                  name: config-tiles
 
         # livenessProbe:
         #   httpGet:

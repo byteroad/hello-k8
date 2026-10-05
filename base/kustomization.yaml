@@ -1,11 +1,8 @@
 ---
-# Sample pygeo deployments are built from these pieces --- look into their
-# respective entries under this directory for more information
 resources:
   - pygeoapi
   - tiles-caop
-  # - tiles-inspire
   - tiles-scalargis
-  - tiles-cos
+  - tiles
   # - ingress.yaml
   - ingress-ssl.yaml
