@@ -4,5 +4,6 @@ resources:
   - tiles-caop
   - tiles-scalargis
   - tiles
+  - tiles-k8
   # - ingress.yaml
   - ingress-ssl.yaml
