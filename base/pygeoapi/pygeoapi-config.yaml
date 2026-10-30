@@ -33,7 +33,8 @@ metadata:
       en: OGC API Service from DGT
     description:
       pt: Plataforma de publicação de dados abertos da DGT em OGC API
-      en: Plattform for publishing Open Data from DGT in OGC API    keywords:
+      en: Plattform for publishing Open Data from DGT in OGC API
+    keywords:
       pt:
       - DGT
       - dados abertos
