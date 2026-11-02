@@ -560,21 +560,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: dtmn
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_municipios
       type: feature
-    - data: http://tiles-caop:3000/cont_municipios/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_municipios/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -620,21 +620,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: dtmnfr
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_freguesias
       type: feature
-    - data: http://tiles-caop:3000/cont_freguesias/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_freguesias/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -681,21 +681,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: id
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_areas_administrativas
       type: feature
-    - data: http://tiles-caop:3000/cont_areas_administrativas/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_areas_administrativas/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -741,21 +741,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: codigo
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_nuts1
       type: feature
-    - data: http://tiles-caop:3000/cont_nuts1/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_nuts1/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -801,21 +801,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: codigo
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_nuts2
       type: feature
-    - data: http://tiles-caop:3000/cont_nuts2/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_nuts2/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -861,21 +861,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: codigo
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_nuts3
       type: feature
-    - data: http://tiles-caop:3000/cont_nuts3/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_nuts3/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -922,21 +922,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: identificador
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_trocos
       type: feature
-    - data: http://tiles-caop:3000/cont_trocos/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_trocos/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
@@ -982,21 +982,21 @@ resources:
       - http://www.opengis.net/def/crs/EPSG/0/4258
       - http://www.opengis.net/def/crs/EPSG/0/3763
       data:
-        dbname: ${REMOTE_CAOP_DB}
-        host: ${REMOTE_CAOP_HOST}
-        port: ${REMOTE_CAOP_PORT}
-        user: ${REMOTE_CAOP_USER}
-        password: ${REMOTE_CAOP_PASSWORD}
+        dbname: ${K8_DB}
+        host: ${K8_HOST}
+        port: ${K8_PORT}
+        user: ${K8_USER}
+        password: ${K8_PASSWORD}
         search_path:
-          - "CAOP2025"
+          - "caop"
           - public
-      geom_field: geometria
-      id_field: dt
+      geom_field: geom
+      id_field: ogc_fid
       name: PostgreSQL
       storage_crs: http://www.opengis.net/def/crs/EPSG/0/3763
       table: cont_distritos
       type: feature
-    - data: http://tiles-caop:3000/cont_distritos/{z}/{x}/{y}?f=mvt
+    - data: http://tiles-k8:3000/cont_distritos/{z}/{x}/{y}?f=mvt
       format:
         mimetype: application/vnd.mapbox-vector-tile
         name: pbf
