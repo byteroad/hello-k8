@@ -3,6 +3,9 @@
 #
 # The interesting details are in the `deployment.yaml` file and in the pygeoapi
 # configuration file mentioned below.
+
+namespace: ogcapi
+
 resources:
   - deployment.yaml
   - service.yaml
