@@ -17,7 +17,7 @@ spec:
         image: ghcr.io/maplibre/martin
         args:
         - "--auto-bounds"
-        - "calc"
+        - "skip"
         - "--cache-size"
         - "8092"
         - "--keep-alive"
