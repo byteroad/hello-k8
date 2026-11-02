@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: martin
-        image: ghcr.io/maplibre/martin
+        image: ghcr.io/maplibre/martin:1.13.0
         args:
         - "--auto-bounds"
         - "calc"
