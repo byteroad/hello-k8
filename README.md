@@ -127,8 +127,8 @@ Create secret in the ogcapi namespace:
 
 ```bash
 kubectl create secret tls pygeoapi-tls-secret \
-  --cert=/home/byteroad/fullchain1.pem \
-  --key=/home/byteroad/privkey1.pem \
+  --cert=/home/byteroad/2ogcapi.pem \
+  --key=/home/byteroad/ogcapi_privkey4.pem \
   -n ogcapi
 ```
 
