@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - k8.byteroad.net
+        - ogcapi.dgterritorio.gov.pt
       secretName: pygeoapi-tls-secret
   rules:
-    - host: k8.byteroad.net
+    - host: ogcapi.dgterritorio.gov.pt
       http:
         paths:
           - path: /
@@ -53,15 +53,15 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-ssl-server-name: "on"
     nginx.ingress.kubernetes.io/proxy-ssl-name: ogcapi-workshop.ogc.org
     nginx.ingress.kubernetes.io/proxy-redirect-from: "https://ogcapi-workshop.ogc.org/"
-    nginx.ingress.kubernetes.io/proxy-redirect-to: "https://k8.byteroad.net/ogcapi-workshop/"
+    nginx.ingress.kubernetes.io/proxy-redirect-to: "https://ogcapi.dgterritorio.gov.pt/ogcapi-workshop/"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - k8.byteroad.net
+        - ogcapi.dgterritorio.gov.pt
       secretName: pygeoapi-tls-secret
   rules:
-    - host: k8.byteroad.net
+    - host: ogcapi.dgterritorio.gov.pt
       http:
         paths:
           - path: /ogcapi-workshop(/|$)(.*)

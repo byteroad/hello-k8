@@ -30,7 +30,7 @@ spec:
               value: "5000"
 
             - name: HOST_URL
-              value: "https://k8.byteroad.net/"
+              value: "https://ogcapi.dgterritorio.gov.pt/"
 
             # We will use this configuration file ...
             - name: PYGEOAPI_CONFIG

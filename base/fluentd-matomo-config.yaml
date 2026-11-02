@@ -19,7 +19,7 @@ data:
       @type record_transformer
       enable_ruby true
       <record>
-        encoded_url ${URI.encode_www_form_component("https://k8.byteroad.net" + record["path"].to_s)}
+        encoded_url ${URI.encode_www_form_component("https://ogcapi.dgterritorio.gov.pt" + record["path"].to_s)}
       </record>
     </filter>
 
