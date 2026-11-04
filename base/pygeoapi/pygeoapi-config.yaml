@@ -13,7 +13,7 @@ server:
   pretty_print: true
   limits:
     default_items: 100
-    max_items: 5000
+    max_items: 1000
     on_exceed: throttle
   map:
     url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
