@@ -18,6 +18,8 @@ data:
     <filter nginx.access>
       @type record_transformer
       enable_ruby true
+      renew_record true
+      keep_keys path
       <record>
         qs ${ [
           ["idsite", ENV['MATOMO_SITE_ID']],
