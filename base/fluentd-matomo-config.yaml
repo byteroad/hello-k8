@@ -18,40 +18,24 @@ data:
     <filter nginx.access>
       @type record_transformer
       enable_ruby true
-      renew_record true
-      keep_keys path
       <record>
-        qs ${ [
-          ["idsite", ENV['MATOMO_SITE_ID']],
-          ["rec", "1"],
-          ["apiv", "1"],
-          ["action_name", "Nginx Log"],
-          ["url", "https://ogcapi.dgterritorio.gov.pt" + record["path"].to_s],
-          ["cip", record["remote"].to_s],
-          ["ua", record["agent"].to_s],
-          ["cdt", Time.at(time.to_i).utc.strftime("%Y-%m-%d %H:%M:%S")],
-          ["token_auth", ENV['MATOMO_TOKEN']]
-        ].map { |k, v| "#{k}=#{URI.encode_www_form_component(v.to_s)}" }.join("&") }
+        encoded_url ${URI.encode_www_form_component("https://ogcapi.dgterritorio.gov.pt" + record["path"].to_s)}
       </record>
     </filter>
 
     <match nginx.access>
       @type http
-      endpoint "#{ENV['MATOMO_URL'].to_s.chomp('/')}/matomo.php?${qs}"
-      http_method post
-      content_type text/plain
+      endpoint "#{ENV['MATOMO_URL']}/matomo.php?idsite=#{ENV['MATOMO_SITE_ID']}&rec=1&apiv=1&action_name=Nginx%20Log&url=${encoded_url}&token_auth=#{ENV['MATOMO_TOKEN']}&cip=${remote}&ua=${agent}"
+      tls_verify_mode none
       <format>
-        @type single_value
-        message_key none
-        add_newline false
+        @type json
       </format>
-      <buffer qs>
-        @type file
-        path /var/log/fluentd-pos/buffer
-        chunk_limit_records 1
-        flush_interval 5s
-        flush_thread_count 4
-        retry_max_interval 30
-        retry_forever true
-      </buffer>
+      <buffer encoded_url,remote,agent>
+          @type memory
+          flush_interval 10s
+          chunk_limit_size 2M
+          queue_limit_length 32
+          retry_max_interval 30
+          retry_forever true
+        </buffer>
     </match>
