@@ -37,13 +37,16 @@ data:
         add_newline false
       </format>
 
-      <buffer qs>
-        @type file
-        path /var/log/fluentd-pos/buffer
+      <buffer>
+        @type memory
         chunk_limit_records 1
-        flush_interval 5s
-        flush_thread_count 4
-        retry_max_interval 30
-        retry_forever true
+        flush_mode immediate
+        flush_thread_count 16
+        total_limit_size 128MB
+        queued_chunks_limit_size 20000
+        overflow_action drop_oldest_chunk
+        retry_type exponential_backoff
+        retry_max_interval 30s
+        retry_timeout 30m
       </buffer>
     </match>
