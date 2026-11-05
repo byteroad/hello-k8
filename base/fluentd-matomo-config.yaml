@@ -27,9 +27,9 @@ data:
 
     <match nginx.access>
       @type http
-      endpoint "#{ENV['MATOMO_URL'].to_s.chomp('/')}/matomo.php?${qs}"
+      endpoint "#{ENV['MATOMO_URL'].to_s.chomp('/')}/matomo.php"
       http_method post
-      content_type text/plain
+      content_type application/x-www-form-urlencoded
 
       <format>
         @type single_value
