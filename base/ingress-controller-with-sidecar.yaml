@@ -117,7 +117,7 @@ spec:
         - name: MATOMO_URL
           value: "https://logs.dgterritorio.gov.pt/"
         - name: MATOMO_SITE_ID
-          value: "4"
+          value: "5"
         - name: MATOMO_TOKEN
           valueFrom:
             secretKeyRef:

@@ -191,8 +191,8 @@ Apply manifest (setting up the range of reserved IPs):
 
     kubectl apply -f base/metallb-config.yaml
 
-Set range of reserved IPs to 192.168.2.240-192.168.2.250:
-
+<!-- 
+    Set range of reserved IPs to 192.168.2.240-192.168.2.250:
     cat <<EOF | kubectl apply -f -
     apiVersion: metallb.io/v1beta1
     kind: IPAddressPool
@@ -202,7 +202,7 @@ Set range of reserved IPs to 192.168.2.240-192.168.2.250:
     spec:
     addresses:
     - 192.168.2.240-192.168.2.250
-    EOF
+    EOF -->
 
 Confirm the set of reserved IPs:
 
