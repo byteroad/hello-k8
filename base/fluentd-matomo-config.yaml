@@ -4,6 +4,7 @@ metadata:
   name: fluentd-matomo-config
   namespace: ogcapi
 data:
+  allow-snippet-annotations: true
   annotations-risk-level: Critical
   fluent.conf: |
     <source>
