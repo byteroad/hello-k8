@@ -4,7 +4,6 @@ metadata:
   name: fluentd-matomo-config
   namespace: ogcapi
 data:
-  allow-snippet-annotations: "true"
   fluent.conf: |
     <source>
       @type tail
