@@ -28,3 +28,4 @@ configMapGenerator:
       - _base.html
       - landing_page.html
       - intergeopt-prr.png
+      - robots.txt
