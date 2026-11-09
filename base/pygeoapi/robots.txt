@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /collections/*/items
-Disallow: /collections/*/tiles
+Disallow: /
