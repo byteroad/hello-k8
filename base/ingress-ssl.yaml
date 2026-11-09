@@ -6,8 +6,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header X-Robots-Tag "noindex, nofollow" always;
 spec:
   ingressClassName: nginx
   tls:
@@ -71,3 +69,30 @@ spec:
                 name: ogcapi-workshop-external
                 port:
                   number: 443
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pygeoapi-robots
+  namespace: ogcapi
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /static/robots.txt
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - ogcapi.dgterritorio.gov.pt
+      secretName: pygeoapi-tls-secret
+  rules:
+    - host: ogcapi.dgterritorio.gov.pt
+      http:
+        paths:
+          - path: /robots.txt
+            pathType: Exact
+            backend:
+              service:
+                name: pygeoapi
+                port:
+                  name: http

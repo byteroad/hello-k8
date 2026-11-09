@@ -69,6 +69,11 @@ spec:
               subPath: intergeopt-prr.png
               readOnly: true
 
+            - name: config
+              mountPath: /pygeoapi/pygeoapi/static/robots.txt
+              subPath: robots.txt
+              readOnly: true
+
             - name: tmp
               mountPath: /tmp
 
@@ -98,6 +103,8 @@ spec:
               - key: intergeopt-prr.png
                 path: intergeopt-prr.png
 
+              - key: robots.txt
+                path: robots.txt
 
         - name: tmp
           emptyDir:
