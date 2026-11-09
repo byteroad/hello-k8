@@ -13,7 +13,7 @@ server:
   pretty_print: true
   limits:
     default_items: 100
-    max_items: 500
+    max_items: 200
     on_exceed: throttle
   map:
     url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
@@ -290,7 +290,7 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
+      default_items: 50
       max_items: 100
       on_exceed: throttle
     providers:
@@ -357,7 +357,7 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
+      default_items: 50
       max_items: 100
       on_exceed: throttle
     providers:
@@ -424,7 +424,7 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
+      default_items: 50
       max_items: 100
       on_exceed: throttle
     providers:
@@ -491,7 +491,7 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
+      default_items: 50
       max_items: 100
       on_exceed: throttle
     providers:
@@ -3629,7 +3629,7 @@ resources:
             end: null
     limits:
       default_items: 50
-      max_items: 500
+      max_items: 100
       on_exceed: throttle
     providers:
         - type: feature
@@ -3693,7 +3693,7 @@ resources:
             end: null
     limits:
       default_items: 50
-      max_items: 500
+      max_items: 100
       on_exceed: throttle
     providers:
         - type: feature
@@ -4735,7 +4735,7 @@ resources:
       type: text/csv
     limits:
       default_items: 100
-      max_items: 500
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
@@ -4809,8 +4809,8 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
-      max_items: 500
+      default_items: 50
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
@@ -4882,8 +4882,8 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
-      max_items: 500
+      default_items: 50
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
@@ -4994,8 +4994,8 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
-      max_items: 500
+      default_items: 50
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
@@ -5062,8 +5062,8 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
-      max_items: 500
+      default_items: 50
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
@@ -5131,8 +5131,8 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
-      max_items: 500
+      default_items: 50
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
@@ -5200,8 +5200,8 @@ resources:
       title: data
       type: text/csv
     limits:
-      default_items: 100
-      max_items: 500
+      default_items: 50
+      max_items: 100
       on_exceed: throttle
     providers:
     - crs:
