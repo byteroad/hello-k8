@@ -44,7 +44,7 @@ spec:
               value: "2"
 
             - name: GUNICORN_CMD_ARGS
-              value: "--access-logfile - --timeout 60 --max-requests 500 --max-requests-jitter 50 --worker-connections 20"
+              value: "--access-logfile - --timeout 60 --max-requests 200 --max-requests-jitter 50 --worker-connections 5"
 
           # The value of the URL of this pygeoapi deployment depends on where
           # it will be deployed to --- so we do not set it here. We will
