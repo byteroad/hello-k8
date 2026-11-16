@@ -5,3 +5,4 @@ resources:
   - tiles-scalargis
   - tiles-k8
   - ingress-ssl.yaml
+  - ingress-nginx-configmap.yaml
