@@ -15,6 +15,23 @@ data:
       </parse>
     </source>
 
+    # Drop traffic that should not be Matomo pageviews
+    <filter nginx.access>
+      @type grep
+      <exclude>
+        key code
+        pattern /^[45]\d\d$/
+      </exclude>
+      <exclude>
+        key path
+        pattern /(\/tiles\/|[?&]offset=)/
+      </exclude>
+      <exclude>
+        key agent
+        pattern /(meta-webindexer|OWSLib|python-requests|bot|crawler|spider)/i
+      </exclude>
+    </filter>
+
     <filter nginx.access>
       @type record_transformer
       enable_ruby true
@@ -30,6 +47,9 @@ data:
       endpoint "#{ENV['MATOMO_URL'].to_s.chomp('/')}/matomo.php"
       http_method post
       content_type application/x-www-form-urlencoded
+      open_timeout 10
+      read_timeout 30
+      retryable_response_codes [429, 500, 502, 503, 504]
 
       <format>
         @type single_value
@@ -41,11 +61,12 @@ data:
         @type memory
         chunk_limit_records 1
         flush_mode immediate
-        flush_thread_count 16
+        flush_thread_count 4
         total_limit_size 128MB
         queued_chunks_limit_size 20000
         overflow_action drop_oldest_chunk
         retry_type exponential_backoff
+        retry_wait 2s
         retry_max_interval 30s
         retry_timeout 30m
       </buffer>
