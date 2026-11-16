@@ -14,3 +14,10 @@ data:
   limit-req-status-code: "429"
   limit-conn-status-code: "429"
   block-user-agents: "~*meta-webindexer.*"
+  http-snippet: |
+    map $arg_offset $deep_offset {
+      default         0;
+       "~^[0-9]{5,}$"  1;
+    }
+  location-snippet: |
+    if ($deep_offset) { return 429; }
