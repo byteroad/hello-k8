@@ -13,7 +13,7 @@ data:
   allow-snippet-annotations: "false"
   limit-req-status-code: "429"
   limit-conn-status-code: "429"
-  block-user-agents: "~*meta-webindexer.*"
+  block-user-agents: "~*meta-webindexer.*,~*meta-externalagent.*"
   http-snippet: |
     map $arg_offset $deep_offset {
       default         0;
