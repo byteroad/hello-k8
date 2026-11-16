@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.10.1
 data:
-  allow-snippet-annotations: "true"
+  allow-snippet-annotations: "false"
   limit-req-status-code: "429"
   limit-conn-status-code: "429"
   block-user-agents: "~*meta-webindexer.*"
