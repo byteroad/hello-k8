@@ -1048,7 +1048,7 @@ resources:
     providers:
     - type: record
       name: CSWFacade
-      data: https://snig.dgterritorio.gov.pt/rndg/srv/por/csw?request=GetCapabilities&service=CSW
+      data: https://snig.dgterritorio.gov.pt/rndg/srv/por/csw
       id_field: identifier
       time_field: datetime
       title_field: title
@@ -1080,7 +1080,7 @@ resources:
     providers:
     - type: record
       name: CSWFacade
-      data: https://snig.dgterritorio.gov.pt/rndg/point/por/csw?request=GetCapabilities&service=CSW
+      data: https://snig.dgterritorio.gov.pt/rndg/point/por/csw
       id_field: identifier
       time_field: datetime
       title_field: title
@@ -1113,7 +1113,7 @@ resources:
     providers:
     - type: record
       name: CSWFacade
-      data: https://snig.dgterritorio.gov.pt/rndg/hvd/por/csw?request=GetCapabilities&service=CSW
+      data: https://snig.dgterritorio.gov.pt/rndg/hvd/por/csw
       id_field: identifier
       time_field: datetime
       title_field: title
