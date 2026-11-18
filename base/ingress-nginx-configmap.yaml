@@ -10,7 +10,14 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.10.1
 data:
-  allow-snippet-annotations: "true"
+  allow-snippet-annotations: "false"
   limit-req-status-code: "429"
   limit-conn-status-code: "429"
-  block-user-agents: "~*meta-webindexer.*"
+  block-user-agents: "~*meta-webindexer.*,~*meta-externalagent.*"
+  http-snippet: |
+    map $arg_offset $deep_offset {
+      default         0;
+       "~^[0-9]{5,}$"  1;
+    }
+  location-snippet: |
+    if ($deep_offset) { return 429; }
