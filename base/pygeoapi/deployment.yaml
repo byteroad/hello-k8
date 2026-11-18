@@ -30,7 +30,10 @@ spec:
               value: "5000"
 
             - name: HOST_URL
-              value: "https://ogcapi.dgterritorio.gov.pt/"
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: HOST_URL
 
             # We will use this configuration file ...
             - name: PYGEOAPI_CONFIG
