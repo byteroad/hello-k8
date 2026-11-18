@@ -13,10 +13,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - tests.byteroad.net
+        - k8.byteroad.net
       secretName: pygeoapi-tls-secret
   rules:
-    - host: tests.byteroad.net
+    - host: k8.byteroad.net
       http:
         paths:
           - path: /
@@ -54,15 +54,15 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-ssl-server-name: "on"
     nginx.ingress.kubernetes.io/proxy-ssl-name: ogcapi-workshop.ogc.org
     nginx.ingress.kubernetes.io/proxy-redirect-from: "https://ogcapi-workshop.ogc.org/"
-    nginx.ingress.kubernetes.io/proxy-redirect-to: "https://tests.byteroad.net/ogcapi-workshop/"
+    nginx.ingress.kubernetes.io/proxy-redirect-to: "https://k8.byteroad.net/ogcapi-workshop/"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - tests.byteroad.net
+        - k8.byteroad.net
       secretName: pygeoapi-tls-secret
   rules:
-    - host: tests.byteroad.net
+    - host: k8.byteroad.net
       http:
         paths:
           - path: /ogcapi-workshop(/|$)(.*)
@@ -86,10 +86,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - tests.byteroad.net
+        - k8.byteroad.net
       secretName: pygeoapi-tls-secret
   rules:
-    - host: tests.byteroad.net
+    - host: k8.byteroad.net
       http:
         paths:
           - path: /robots.txt
