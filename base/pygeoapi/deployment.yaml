@@ -125,8 +125,8 @@ spec:
         - name: tmp
           emptyDir:
             medium: Memory
-            sizeLimit: 128Mi
+            # sizeLimit: 128Mi
         - name: var
           emptyDir:
             medium: Memory
-            sizeLimit: 64Mi
+            # sizeLimit: 64Mi
