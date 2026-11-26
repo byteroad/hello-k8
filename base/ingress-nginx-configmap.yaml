@@ -21,7 +21,7 @@ data:
   http-snippet: |
     map $arg_offset $deep_offset {
       default         0;
-       "~^[0-9]{5,}$"  1;
+       "~^[0-9]{4,}$"  1;
     }
   location-snippet: |
     if ($deep_offset) { return 429; }
