@@ -21,7 +21,49 @@ data:
   http-snippet: |
     map $arg_offset $deep_offset {
       default         0;
-       "~^[0-9]{4,}$"  1;
+      "~^[0-9]{4,}$"  1;
     }
+
+    # Trusted referer (origin-only referers like https://host/ also match)
+    map $http_referer $referer_trusted {
+      default                                              0;
+      "~*^https?://mapaspt\.dgterritorio\.gov\.pt(/|$)"    1;
+    }
+
+    # Replaces the limit-allowlist annotation (uses the real IP from CF-Connecting-IP)
+    geo $ip_allowed {
+      default            0;
+      192.168.2.0/24     1;
+      51.21.193.251/32   1;
+    }
+
+    map "$referer_trusted$ip_allowed" $exempt {
+      "00"     0;
+      default  1;
+    }
+
+    map $uri $is_tile {
+      default                         0;
+      "~^/collections/[^/]+/tiles/"   1;
+    }
+
+    # Empty key = request is not counted against that zone
+    map "$exempt$is_tile" $strict_key {
+      "00"     $binary_remote_addr;
+      default  "";
+    }
+    map "$exempt$is_tile" $tile_key {
+      "01"     $binary_remote_addr;
+      default  "";
+    }
+
+    limit_req_zone  $strict_key zone=ogc_strict:10m     rate=5r/s;
+    limit_req_zone  $tile_key   zone=ogc_tiles:10m      rate=50r/s;
+    limit_conn_zone $strict_key zone=ogc_strict_conn:10m;
+    limit_conn_zone $tile_key   zone=ogc_tiles_conn:10m;
   location-snippet: |
     if ($deep_offset) { return 429; }
+    limit_req  zone=ogc_strict burst=15  nodelay;
+    limit_req  zone=ogc_tiles  burst=250 nodelay;
+    limit_conn ogc_strict_conn 5;
+    limit_conn ogc_tiles_conn  30;
