@@ -22,3 +22,4 @@ data:
     }
   location-snippet: |
     if ($deep_offset) { return 429; }
+    limit_conn ogc_global 4;
